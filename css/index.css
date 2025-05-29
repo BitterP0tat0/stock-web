@@ -56,6 +56,7 @@ body.dark-mode {
   --footer-bg-color: #1a1a1a;
   --footer-text-color: #999999;
   --footer-border-color: #333333;
+  --menu--background-color: #999999;
 }
 
 body {
@@ -64,13 +65,20 @@ body {
 }
 
 nav.navbar {
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
+  margin: auto;
   font-weight: 600;
   font-size: 1.1rem;
   box-shadow: var(--nav-shadow);
   background-color: var(--nav-bg-color);
   color: var(--nav-text-color);
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 1s ease;
+}
+
+.navbar-toggler {
+  background-color: var(--menu--background-color);
+  border-color: var(--menu--background-color) !important;
+  color: var(--nav-text-color) !important;
 }
 
 .carousel-item img {
@@ -111,7 +119,6 @@ nav.navbar {
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-  background-color: var(--link-hover-bg);
   color: var(--link-hover-color);
 }
 
