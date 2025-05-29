@@ -1,0 +1,170 @@
+:root {
+
+  --bg-color: #f8f9fa;
+  --text-color: #212529;
+  --nav-bg-color: #ffffff;
+  --nav-text-color: #212529;
+  --nav-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  --link-hover-bg: #0d6efd1a;
+  --link-hover-color: #0d6efd;
+  --card-bg-color: #ffffff;
+  --card-text-color: #212529;
+  --card-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  --additional-bg-color: #e9ecef;
+  --additional-text-color: initial;
+  --button-bg-color: #0d6efd;
+  --button-hover-bg-color: #0b5ed7;
+  --footer-bg-color: #f8f9fa;
+  --footer-text-color: #6c757d;
+  --footer-border-color: #dee2e6;
+}
+
+body.light-mode {
+  --bg-color: #f8f9fa;
+  --text-color: #212529;
+  --nav-bg-color: #ffffff;
+  --nav-text-color: #212529;
+  --nav-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  --link-hover-bg: #0d6efd1a;
+  --link-hover-color: #0d6efd;
+  --card-bg-color: #ffffff;
+  --card-text-color: #212529;
+  --card-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  --additional-bg-color: #e9ecef;
+  --additional-text-color: initial;
+  --button-bg-color: #0d6efd;
+  --button-hover-bg-color: #0b5ed7;
+  --footer-bg-color: #f8f9fa;
+  --footer-text-color: #6c757d;
+  --footer-border-color: #dee2e6;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #e1e1e1;
+  --nav-bg-color: #1f1f1f;
+  --nav-text-color: #e1e1e1;
+  --nav-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  --link-hover-bg: #0d6efd33;
+  --link-hover-color: #66aaff;
+  --card-bg-color: #2a2a2a;
+  --card-text-color: #e1e1e1;
+  --card-shadow: 0 4px 14px rgba(0, 0, 0, 0.8);
+  --additional-bg-color: #292929;
+  --additional-text-color: #ccc;
+  --button-bg-color: #0d6efd;
+  --button-hover-bg-color: #0b5ed7;
+  --footer-bg-color: #1a1a1a;
+  --footer-text-color: #999999;
+  --footer-border-color: #333333;
+}
+
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+}
+
+nav.navbar {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: var(--nav-shadow);
+  background-color: var(--nav-bg-color);
+  color: var(--nav-text-color);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.navbar-nav {
+  margin-left: auto !important;
+}
+
+.navbar-nav .nav-link {
+  color: inherit;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+  border-radius: 0.375rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  background-color: var(--link-hover-bg);
+  color: var(--link-hover-color);
+}
+
+#mode-toggle {
+  font-weight: 600;
+  border-radius: 0.375rem;
+  padding: 0.375rem 1rem;
+  margin-left: 1rem;
+}
+
+.card.mode-card {
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+  box-shadow: var(--card-shadow);
+}
+
+h1, h2, h5 {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.additional-content {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background-color: var(--additional-bg-color);
+  color: var(--additional-text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.anime-gallery img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.anime-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.additional-content button {
+  background-color: var(--button-bg-color);
+  border: none;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.additional-content button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+footer {
+  padding: 1rem 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+  border-top: 1px solid var(--footer-border-color);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+footer a {
+  color: var(--link-hover-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: var(--link-hover-bg);
+}
