@@ -104,6 +104,7 @@ nav.navbar {
 .navbar-brand {
   font-weight: 700;
   letter-spacing: 1.5px;
+  color: var(--nav-text-color)
 }
 
 .navbar-nav {
