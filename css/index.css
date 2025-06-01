@@ -36,6 +36,8 @@ body.light-mode {
   --footer-bg-color: #f8f9fa;
   --footer-text-color: #6c757d;
   --footer-border-color: #dee2e6;
+  --comment--shadow-color:rgb(0 0 0 / 0.1);
+
 }
 
 body.dark-mode {
@@ -57,6 +59,7 @@ body.dark-mode {
   --footer-text-color: #999999;
   --footer-border-color: #333333;
   --menu--background-color: #999999;
+  --comment--shadow-color:#FFFFFF;
 }
 
 body {
@@ -157,10 +160,18 @@ h5 {
 .comments-gallery img {
   cursor: pointer;
   transition: transform 0.3s ease;
+  height: 40vh;
+}
+@media screen and (max-width: 768px) {
+  .comments-gallery img {
+    height: 30vh;
+    width: 100%;
+  }
+  
 }
 .comments-gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px var(--comment--shadow-color);
 }
 .additional-content button {
   background-color: var(--button-bg-color);
