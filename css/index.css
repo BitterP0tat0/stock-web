@@ -36,8 +36,7 @@ body.light-mode {
   --footer-bg-color: #f8f9fa;
   --footer-text-color: #6c757d;
   --footer-border-color: #dee2e6;
-  --comment--shadow-color:rgb(0 0 0 / 0.1);
-
+  --comment--shadow-color: rgb(0 0 0 / 0.1);
 }
 
 body.dark-mode {
@@ -59,7 +58,7 @@ body.dark-mode {
   --footer-text-color: #999999;
   --footer-border-color: #333333;
   --menu--background-color: #999999;
-  --comment--shadow-color:#FFFFFF;
+  --comment--shadow-color: #ffffff;
 }
 
 body.dark-mode .navbar-brand:hover,
@@ -116,7 +115,7 @@ nav.navbar {
 .navbar-brand {
   font-weight: 700;
   letter-spacing: 1.5px;
-  color: var(--nav-text-color)
+  color: var(--nav-text-color);
 }
 
 .navbar-nav {
@@ -193,13 +192,13 @@ h5 {
   cursor: pointer;
   transition: transform 0.3s ease;
   height: 40vh;
+  width: 85%;
 }
 @media screen and (max-width: 768px) {
   .comments-gallery img {
     height: 30vh;
     width: 100%;
   }
-  
 }
 .comments-gallery img:hover {
   transform: scale(1.03);
