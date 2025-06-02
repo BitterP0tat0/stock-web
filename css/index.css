@@ -190,12 +190,12 @@ h5 {
 .comments-gallery img {
   cursor: pointer;
   transition: transform 0.3s ease;
-  height: 40vh;
+  height: 30vh;
   width: 85%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .comments-gallery img {
-    height: 30vh;
+    height: 40vh;
     width: 100%;
   }
 }
