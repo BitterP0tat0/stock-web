@@ -1,40 +1,37 @@
-class Signup {
-  constructor(name, email, password) {
-    //not empty
-    if (!name || !email || !password) {
+export default class Signup {
+  constructor(email, username, password) {
+    if (!email || !username || !password) {
       throw new Error("All fields are required.");
     }
-    this.name = name;
     this.email = email;
+    this.username = username;
     this.password = password;
   }
 
-  //getters and setters
-  getName() {
-    return this.name;
-  }
-  setName(name) {
-    if (!name) {
-      throw new Error("Name cannot be empty.");
-    }
-    this.name = name;
-  }
   getEmail() {
     return this.email;
   }
+
   setEmail(email) {
-    if (!email) {
-      throw new Error("Email cannot be empty.");
-    }
+    if (!email) throw new Error("Email cannot be empty.");
     this.email = email;
   }
+
+  getName() {
+    return this.username;
+  }
+
+  setName(username) {
+    if (!username) throw new Error("Username cannot be empty.");
+    this.username = username;
+  }
+
   getPassword() {
     return this.password;
   }
+
   setPassword(password) {
-    if (!password) {
-      throw new Error("Password cannot be empty.");
-    }
+    if (!password) throw new Error("Password cannot be empty.");
     this.password = password;
   }
 }
