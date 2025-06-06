@@ -36,6 +36,7 @@ Login.addEventListener("click", async function (event) {
 
       document.getElementById("loginUserName").value = "";
       document.getElementById("InputPassword").value = "";
+      window.location.href = '../login/login.html';
 
     } else {
       alert("Please fill in both fields.");
