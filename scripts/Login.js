@@ -37,7 +37,6 @@ Login.addEventListener("click", async function (event) {
       document.getElementById("loginUserName").value = "";
       document.getElementById("InputPassword").value = "";
       window.location.href = '../stock_trade/main.html?username=' + encodeURIComponent(user.getUsername());
-
     } else {
       alert("Please fill in both fields.");
     }
