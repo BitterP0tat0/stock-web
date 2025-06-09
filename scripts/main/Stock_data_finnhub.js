@@ -5,12 +5,11 @@ const tradeTableContainer = document.getElementById('tradeTableContainer');
 const paginationContainer = document.getElementById('pagination');
 const latestTradesBySymbol = {}; 
 const balance = document.getElementById('balance');
-
+const username = new URLSearchParams(window.location.search).get('username');
 
 
 let currentPage = 1;
 const itemsPerPage = 10;
-
 function renderTradesTable() {
   const symbols = Object.keys(latestTradesBySymbol);
   if (symbols.length === 0) {
@@ -20,9 +19,9 @@ function renderTradesTable() {
   }
 
   const tradesArray = Array.from(symbols, symbol => latestTradesBySymbol[symbol]);
-  
+
   const totalPages = Math.ceil(tradesArray.length / itemsPerPage);
-  if (currentPage > totalPages) currentPage = totalPages; 
+  if (currentPage > totalPages) currentPage = totalPages;
   if (currentPage < 1) currentPage = 1;
 
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -36,6 +35,7 @@ function renderTradesTable() {
         <td>$${trade.p}</td>
         <td>${trade.t ? new Date(trade.t).toLocaleString() : ''}</td>
         <td>${trade.v}</td>
+        <td><button class="btn btn-sm btn-secondary" onclick="showDetails('${trade.s}')">Details</button></td>
       </tr>
     `;
   }).join('');
@@ -48,6 +48,7 @@ function renderTradesTable() {
           <th>Price</th>
           <th>Time</th>
           <th>Volume</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -60,6 +61,7 @@ function renderTradesTable() {
 
   renderPagination(totalPages);
 }
+
 
 function renderPagination(totalPages) {
   if (totalPages <= 1) {
@@ -92,7 +94,11 @@ function goToPage(page) {
   currentPage = page;
   renderTradesTable();
 }
-
+function showDetails(symbol) {
+  const trade = latestTradesBySymbol[symbol];
+  if (!trade) return;
+  window.location.href = `../chart/chart.html?symbol=${encodeURIComponent(symbol)}&username=${encodeURIComponent(username)}`;
+}
 socket.on('trades', (data) => {
   data.forEach(trade => {
     latestTradesBySymbol[trade.s] = trade;
