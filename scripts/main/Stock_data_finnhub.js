@@ -65,15 +65,10 @@
           backgroundColor: 'rgba(54, 162, 235, 0.3)',
           fill: true,
           tension: 0.3,
-          pointRadius: 3
+          pointRadius: 7
         }]
       },
-      options: {
-        responsive: true,
-        scales: {
-          y: { beginAtZero: false }
-        }
-      }
+ 
     });
   }
   
