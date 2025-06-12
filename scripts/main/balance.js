@@ -24,23 +24,23 @@ async function fetchHoldings(username) {
   }
 }
 
-async function renderBalance() {
-  const username = getQueryParam('username');
-  console.log('Logged in username:', username);
+// async function renderBalance() {
+//   const username = getQueryParam('username');
+//   console.log('Logged in username:', username);
 
-  const holdings = await fetchHoldings(username);
+//   const holdings = await fetchHoldings(username);
 
-  const amount = document.getElementById('amount'); 
+//   const amount = document.getElementById('amount'); 
 
-  if (holdings.length === 0) {
-    amount.innerHTML = '<p class="text-muted">0 $</p>';
-  } else {
-    const totalBalance = holdings.reduce(
-      (sum, holding) => sum + (holding.current_price || 0) * (holding.quantity || 0),
-      0
-    );
-    amount.innerHTML = `<p class="text-muted">Total Balance: $${totalBalance.toFixed(2)}</p>`;
-  }
-}
+//   if (holdings.length === 0) {
+//     amount.innerHTML = '<p class="text-muted">0 $</p>';
+//   } else {
+//     const totalBalance = holdings.reduce(
+//       (sum, holding) => sum + (holding.current_price || 0) * (holding.quantity || 0),
+//       0
+//     );
+//     amount.innerHTML = `<p class="text-muted">Total Balance: $${totalBalance.toFixed(2)}</p>`;
+//   }
+// }
 
-renderBalance();
+// renderBalance();
