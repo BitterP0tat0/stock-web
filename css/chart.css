@@ -1,0 +1,38 @@
+h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    #buttons {
+      margin: 20px 0;
+    }
+
+    button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #3b82f6;
+      color: white;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    #chart-container {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 90vw;
+      width: 1000px;
+      margin-top: 10px;
+    }
+
+    canvas {
+      max-width: 100%;
+    }

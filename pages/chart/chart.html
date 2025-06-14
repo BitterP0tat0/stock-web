@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alpha Vantage TIME_SERIES_DAILY Graph Example</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    #chart-container {
-      max-width: 100vh;
-      margin-top: 30px;
-    }
-  </style>
+  <title>Alpha Vantage Stock Chart</title>
+  <link rel="stylesheet" href="../../css/chart.css" />
+
 </head>
 <body>
   <h1></h1>
+
+  <div id="buttons">
+    <button onclick="loadChart('daily')">Daily</button>
+    <button onclick="loadChart('monthly')">Monthly</button>
+    <button onclick="loadChart('yearly')">Yearly</button>
+  </div>
 
   <div id="chart-container">
     <canvas id="closePriceChart"></canvas>
@@ -21,97 +22,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <script>
-    // APJKM04Q8Q5VU2W7 another API key for Alpha Vantage
-    // 7iuvkjj3japk0g2g is the API key used in this example
-    const apiKey = '7iuvkjj3japk0g2g';  
-    const h1 = document.querySelector('h1');
-    const symbol = new URLSearchParams(window.location.search).get('symbol');
-    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${apiKey}`;
-
-    if (!symbol) {
-      alert('No stock symbol provided.');
-      throw new Error('No stock symbol provided.');
-    }
-    console.log(`Fetching data for symbol: ${symbol}`);
-    h1.textContent = `Close Price Chart for ${symbol}`;
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const timeSeries = data['Time Series (Daily)'];
-        if (!timeSeries) {
-          alert('Error fetching data or API limit reached.');
-          return;
-        }
-
-        const dates = Object.keys(timeSeries).slice(0, 10).reverse(); 
-        const closePrices = dates.map(date => parseFloat(timeSeries[date]['4. close']));
-        const openPrices = dates.map(date => parseFloat(timeSeries[date]['1. open']));
-        const ctx = document.getElementById('closePriceChart').getContext('2d');
-        const chart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: dates,
-            datasets: [{
-              label: 'Close Price (USD)',
-              data: closePrices,
-              borderColor: 'rgba(75, 192, 192, 1)',
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              fill: true,
-              tension: 0.3,
-              pointRadius: 4,
-              pointHoverRadius: 6,
-            }, {
-              label: 'Open Price (USD)',
-              data: openPrices,
-              borderColor: 'rgba(255, 99, 132, 1)',
-              backgroundColor: 'rgba(255, 99, 132, 0.2)',
-              fill: true,
-              tension: 0.3,
-              pointRadius: 4,
-              pointHoverRadius: 6,
-            }
-        ]
-          },
-          options: {
-            responsive: true,
-            scales: {
-              x: {
-                title: {
-                  display: true,
-                  text: 'Date'
-                }
-              },
-              y: {
-                title: {
-                  display: true,
-                  text: 'Close Price (USD)'
-                },
-                beginAtZero: false
-              }
-            },
-            plugins: {
-              legend: {
-                display: true,
-                position: 'top'
-              },
-              tooltip: {
-                mode: 'index',
-                intersect: false,
-              }
-            },
-            interaction: {
-              mode: 'nearest',
-              axis: 'x',
-              intersect: false
-            }
-          }
-        });
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('Failed to fetch data.');
-      });
-  </script>
+  <script src="../../scripts/chart.js"></script>
 </body>
 </html>
