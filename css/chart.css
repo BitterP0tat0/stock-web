@@ -1,38 +1,135 @@
-h1 {
-      color: #333;
-      text-align: center;
+ :root {
+      --bg-color: #f8f9fa;
+      --text-color: #212529;
+      --nav-bg-color: #ffffff;
+      --nav-text-color: #212529;
+      --nav-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      --link-hover-bg: #0d6efd1a;
+      --link-hover-color: #0d6efd;
+      --card-bg-color: #ffffff;
+      --card-text-color: #212529;
+      --card-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      --additional-bg-color: #e9ecef;
+      --additional-text-color: initial;
+      --button-bg-color: #0d6efd;
+      --button-hover-bg-color: #0b5ed7;
+      --footer-bg-color: #f8f9fa;
+      --footer-text-color: #6c757d;
+      --footer-border-color: #dee2e6;
+      --box-shadow-color: #ffffff;
+
+      --chart-bg-color: rgba(0,0,0,0.05);
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #e1e1e1;
+      --nav-bg-color: #1f1f1f;
+      --nav-text-color: #e1e1e1;
+      --nav-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+      --link-hover-bg: #0d6efd33;
+      --link-hover-color: #66aaff;
+      --card-bg-color: #2a2a2a;
+      --card-text-color: #e1e1e1;
+      --card-shadow: 0 4px 14px rgba(0, 0, 0, 0.8);
+      --additional-bg-color: #292929;
+      --additional-text-color: #ccc;
+      --button-bg-color: #0d6efd;
+      --button-hover-bg-color: #0b5ed7;
+      --footer-bg-color: #1a1a1a;
+      --footer-text-color: #999999;
+      --footer-border-color: #333333;
+      --menu-background-color: #999999;
+      --box-shadow-color: purple;
+
+      --chart-bg-color: rgba(255,255,255,0.1);
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+    }
+
+    nav.navbar {
+      padding: 0.8rem 1rem;
+      margin: auto;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: var(--nav-shadow);
+      background-color: var(--nav-bg-color);
+      color: var(--nav-text-color);
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 1s ease;
+    }
+
+    .navbar-toggler {
+      background-color: var(--menu-background-color);
+      border-color: var(--menu-background-color) !important;
+      color: var(--nav-text-color) !important;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--nav-text-color);
+    }
+
+    .navbar-nav {
+      margin-left: auto !important;
+    }
+
+    .navbar-nav .nav-link {
+      position: relative;
+      overflow: hidden;
+      color: var(--nav-text-color);
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: 0.2em;
+      width: 60%;
+      height: 3px;
+      background: var(--link-hover-color);
+      border-radius: 2px;
+      transform: translateX(-50%) scaleX(0);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link:focus::after {
+      transform: translateX(-50%) scaleX(1);
     }
 
     #buttons {
-      margin: 20px 0;
+      margin: 1rem;
+      text-align: center;
     }
 
-    button {
-      margin: 0 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border: none;
-      background-color: #3b82f6;
-      color: white;
-      border-radius: 6px;
-      transition: background-color 0.3s ease;
+    #buttons button {
+      margin: 0 0.5rem;
     }
 
-    button:hover {
-      background-color: #2563eb;
+    .content{
+      
+      padding-top: 10vh;
     }
-
     #chart-container {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      max-width: 90vw;
-      width: 1000px;
-      margin-top: 10px;
+      width: 80vh;
+      height: 60vh;
+      margin: 0 auto 3rem auto;
+      padding: 5rem;
+      background-color: var(--card-bg-color);
+      box-shadow: var(--card-shadow);
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-
-    canvas {
-      max-width: 100%;
+    .closePriceChart{
+      width: 80vh;
+      height: 60vh;
     }

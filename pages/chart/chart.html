@@ -3,25 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alpha Vantage Stock Chart</title>
+  <title>Alpha Vantage Stock Chart with Dark Mode</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../css/chart.css" />
-
 </head>
 <body>
-  <h1></h1>
 
-  <div id="buttons">
-    <button onclick="loadChart('daily')">Daily</button>
-    <button onclick="loadChart('monthly')">Monthly</button>
-    <button onclick="loadChart('yearly')">Yearly</button>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">Finance</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-4 mb-lg-0 align-items-center">
+        <li class="nav-item">
+          <a class="nav-link mt-2" href="#">My Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mt-2" href="#">Premium</a>
+        </li>
+        <button id="mode-toggle" class="btn btn-outline-secondary ms-2 mt-2">
+          Dark Mode
+        </button>
+      </ul>
+    </div>
   </div>
+</nav>
+<div class = "content">
+<h1 class="text-center mt-4 mb-3"></h1>
 
-  <div id="chart-container">
-    <canvas id="closePriceChart"></canvas>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <script src="../../scripts/chart.js"></script>
+<div id="chart-container">
+  <canvas id="closePriceChart"></canvas>
+</div>
+<div id="buttons" class="text-center">
+  <button onclick="loadChart('daily')" class="btn btn-primary">Daily</button>
+  <button onclick="loadChart('monthly')" class="btn btn-primary">Monthly</button>
+  <button onclick="loadChart('yearly')" class="btn btn-primary">Yearly</button>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src = "../../scripts/chart.js">
+
+</script>
+
 </body>
 </html>
