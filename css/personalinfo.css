@@ -1,0 +1,101 @@
+/* Padding to bring content away from screen edges */
+main.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Light border with rounded corners for specific sections */
+.bordered-box {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 15px;
+  background-color: var(--card-bg-color);
+}
+
+/* Language dropdown fix */
+.lang-toggle {
+  min-width: 50px;
+  padding: 2px 10px;
+  text-align: center;
+}
+
+/* Profile card styling */
+.profile-card {
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--footer-border-color);
+}
+
+/* Profile picture style */
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #212529;
+}
+
+/* Section heading */
+.section h5 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+/* List item styling */
+.section li {
+  padding: 8px 0;
+  font-size: 1.05rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.section li:hover {
+  color: var(--link-hover-color);
+}
+
+/* Buttons */
+.btn-outline-danger,
+.btn-dark {
+  width: 48%;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .profile-card,
+body.dark-mode .bordered-box {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark-mode .btn-outline-secondary {
+  border-color: #bbb;
+  color: #eee;
+}
+
+body.dark-mode .btn-outline-secondary:hover {
+  background-color: #444;
+}
+
+body.dark-mode .dropdown-menu {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+/* Invert dark button style in dark mode */
+body.dark-mode .btn-dark {
+  background-color: #f0f0f0;
+  color: #121212;
+  border: none;
+}
+
+body.dark-mode .btn-dark:hover {
+  background-color: #dddddd;
+  color: #000;
+}
+
