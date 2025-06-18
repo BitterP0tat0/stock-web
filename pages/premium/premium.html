@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/index.css" />
+    <link rel="stylesheet" href="../../css/premium.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="../../index.html">Finance</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="../login/login.html">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="../register/register.html">Register</a></li>
+            <li class="nav-item"><a class="nav-link" href="../contact/contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link active" href="./premium.html">Premium</a></li>
+            <button id="mode-toggle" class="btn btn-outline-secondary ms-2">Dark Mode</button>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-5">      
+      <div class="premium-header">
+        <h2>Unlock Premium Features</h2>
+        <p>More insights. No ads. Exclusive tools</p>
+        <button class="btn upgrade-btn fw-bold mt-2">Upgrade Now</button>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <ul class="list-unstyled feature-list">
+            <li><i class="bi bi-bar-chart-line-fill"></i> Advanced analytics & trends</li>
+            <li><i class="bi bi-x-circle-fill"></i> Ad-free experience</li>
+            <li><i class="bi bi-bell-fill"></i> Real-time alerts</li>
+            <li><i class="bi bi-megaphone-fill"></i> Early access to market events</li>
+          </ul>
+
+          <div class="subscribe-card">
+            <div class="pricing-toggle">
+              <button class="btn monthly-btn">Monthly</button>
+              <button class="btn yearly-btn">
+                Yearly <span class="badge yearly-badge">15%</span>
+              </button>
+            </div>
+            <h5 class="mt-4">Premium €9.99/month</h5>
+            <button class="btn subscribe-btn fw-bold">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-center py-4 mt-5">
+      <div class="container">
+        <small>&copy; 2025 Finance. All rights reserved.</small>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../scripts/Navigatorbar/Navigation.js"></script>
+     <script>
+      const body = document.body;
+      const toggle = document.getElementById("mode-toggle-switch");
+
+      toggle?.addEventListener("change", () => {
+        body.classList.toggle("dark-mode");
+      });
+
+      document.getElementById("mode-toggle")?.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        toggle.checked = body.classList.contains("dark-mode");
+      });
+    </script>
+  </body>
+</html>
