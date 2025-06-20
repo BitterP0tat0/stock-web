@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Stock Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: white;
+        color: black;
+        transition: background 0.3s, color 0.3s;
+        padding: 20px;
+      }
+
+      .dark-mode {
+        background-color: #1e1e1e;
+        color: white;
+      }
+
+      :root {
+        --text-color: black;
+        --chart-bg-color: #e0e0e0;
+      }
+
+      .dark-mode {
+        --text-color: white;
+        --chart-bg-color: #333333;
+      }
+
+      canvas {
+        max-width: 100%;
+        height: 400px;
+      }
+
+      button {
+        margin: 10px 5px;
+        padding: 10px 16px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Stock Chart</h1>
+    <button id="mode-toggle">Dark Mode</button>
+    <button id="load-test-data">Load Test Data</button>
+    <canvas id="closePriceChart"></canvas>
+
+    <script>
+      const ctx = document.getElementById("closePriceChart").getContext("2d");
+      const toggleBtn = document.getElementById("mode-toggle");
+      const body = document.body;
+      let chartInstance = null;
+
+      function getChartColors() {
+        const style = getComputedStyle(document.body);
+        return {
+          textColor: style.getPropertyValue("--text-color").trim(),
+          bgColor: style.getPropertyValue("--chart-bg-color").trim(),
+        };
+      }
+
+      function loadTestChart() {
+        const labels = [
+          "01/01/2025",
+          "01/02/2025",
+          "01/03/2025",
+          "01/04/2025",
+          "01/05/2025",
+          "01/06/2025",
+          "01/07/2025",
+          "01/08/2025",
+          "01/09/2025",
+          "01/10/2025",
+        ];
+
+        const closePrices = [150, 152, 149, 155, 158, 160, 157, 162, 164, 165];
+        const openPrices = [148, 151, 150, 153, 157, 159, 156, 161, 163, 166];
+
+        const { textColor, bgColor } = getChartColors();
+        const chart_color = body.classList.contains("dark-mode")
+          ? "#FFFFFF"
+          : "#000000";
+
+        if (chartInstance) chartInstance.destroy();
+
+        chartInstance = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels,
+            datasets: [
+              {
+                label: "Close Price (USD)",
+                data: closePrices,
+                borderColor: "#3b82f6",
+                backgroundColor: "rgba(59, 130, 246, 0.2)",
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 6,
+              },
+              {
+                label: "Open Price (USD)",
+                data: openPrices,
+                borderColor: "#f87171",
+                backgroundColor: "rgba(248, 113, 113, 0.2)",
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 6,
+              },
+            ],
+          },
+          options: {
+            plugins: {
+              legend: {
+                labels: {
+                  color: chart_color,
+                  font: {
+                    size: 14,
+                  },
+                },
+              },
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: "Date (MM/DD/YYYY)",
+                  color: chart_color,
+                },
+                ticks: { color: textColor },
+                grid: { color: bgColor },
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: "Price in USD",
+                  color: chart_color,
+                },
+                ticks: { color: textColor },
+                grid: { color: bgColor },
+                beginAtZero: false,
+              },
+            },
+          },
+        });
+      }
+
+      toggleBtn.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        toggleBtn.textContent = body.classList.contains("dark-mode")
+          ? "Light Mode"
+          : "Dark Mode";
+        if (chartInstance) loadTestChart(); // re-render with new color
+      });
+
+      document
+        .getElementById("load-test-data")
+        .addEventListener("click", loadTestChart);
+
+      // Load chart on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        loadTestChart();
+      });
+    </script>
+  </body>
+</html>
