@@ -2,13 +2,12 @@
 // 7iuvkjj3japk0g2g is the API key used in this
 const apiKey = "APJKM04Q8Q5VU2W7";
 const h1 = document.querySelector("h1");
-const symbol =
-  new URLSearchParams(window.location.search).get("symbol") || "MSFT";
+const symbol = new URLSearchParams(window.location.search).get("symbol") || "MSFT";
 const ctx = document.getElementById("closePriceChart").getContext("2d");
 const toggleBtn = document.getElementById("mode-toggle");
 const body = document.body;
-const chart_color = body.classList.contains("dark-mode") ? "#FFFFF" : "#000000";
 let chartInstance = null;
+let cachedData = { labels: [], closePrices: [], openPrices: [] };
 
 h1.textContent = `Stock Chart for ${symbol.toUpperCase()}`;
 
@@ -25,6 +24,71 @@ function getChartColors() {
     textColor: style.getPropertyValue("--text-color").trim(),
     bgColor: style.getPropertyValue("--chart-bg-color").trim(),
   };
+}
+
+function renderChart() {
+  const { textColor, bgColor } = getChartColors();
+  if (chartInstance) chartInstance.destroy();
+
+  chartInstance = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: cachedData.labels,
+      datasets: [
+        {
+          label: "Close Price (USD)",
+          data: cachedData.closePrices,
+          borderColor: "#3b82f6",
+          backgroundColor: "rgba(59, 130, 246, 0.2)",
+          fill: true,
+          tension: 0.4,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+        },
+        {
+          label: "Open Price (USD)",
+          data: cachedData.openPrices,
+          borderColor: "#f87171",
+          backgroundColor: "rgba(248, 113, 113, 0.2)",
+          fill: true,
+          tension: 0.4,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: textColor,
+            font: { size: 14 },
+          },
+        },
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: "Date (MM/DD/YYYY)",
+            color: textColor,
+          },
+          ticks: { color: textColor },
+          grid: { color: bgColor },
+        },
+        y: {
+          title: {
+            display: true,
+            text: "Price in USD",
+            color: textColor,
+          },
+          ticks: { color: textColor },
+          grid: { color: bgColor },
+          beginAtZero: false,
+        },
+      },
+    },
+  });
 }
 
 function loadChart(type) {
@@ -53,99 +117,32 @@ function loadChart(type) {
       else rawDates = rawDates.slice(0, 10);
       rawDates = rawDates.reverse();
 
-      const labels = rawDates.map((date) => formatDate(date, type));
-      const closePrices = rawDates.map((date) =>
+      cachedData.labels = rawDates.map((date) => formatDate(date, type));
+      cachedData.closePrices = rawDates.map((date) =>
         parseFloat(timeSeries[date]["4. close"])
       );
-      const openPrices = rawDates.map((date) =>
+      cachedData.openPrices = rawDates.map((date) =>
         parseFloat(timeSeries[date]["1. open"])
       );
 
-      const { textColor, bgColor } = getChartColors();
-
-      if (chartInstance) chartInstance.destroy();
-
-      chartInstance = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels,
-          datasets: [
-            {
-              label: "Close Price (USD)",
-              data: closePrices,
-              borderColor: "#3b82f6",
-              backgroundColor: "rgba(59, 130, 246, 0.2)",
-              fill: true,
-              tension: 0.4,
-              pointRadius: 4,
-              pointHoverRadius: 6,
-            },
-            {
-              label: "Open Price (USD)",
-              data: openPrices,
-              borderColor: "#f87171",
-              backgroundColor: "rgba(248, 113, 113, 0.2)",
-              fill: true,
-              tension: 0.4,
-              pointRadius: 4,
-              pointHoverRadius: 6,
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            legend: {
-              labels: {
-                color: chart_color,
-                font: {
-                  size: 14,
-                },
-              },
-            },
-          },
-          scales: {
-            x: {
-              title: {
-                display: true,
-                text:
-                  type === "daily"
-                    ? "Date (MM/DD/YYYY)"
-                    : type === "monthly"
-                    ? "Month/Year"
-                    : "Year",
-                color: chart_color,
-              },
-              ticks: { color: textColor },
-              grid: { color: bgColor },
-            },
-            y: {
-              title: {
-                display: true,
-                text: "Price in USD",
-                color: chart_color,
-              },
-              ticks: { color: textColor },
-              grid: { color: bgColor },
-              beginAtZero: false,
-            },
-          },
-        },
-      }).catch((error) => {
-        console.error("Error:", error);
-        alert("Failed to fetch data.");
-      });
+      renderChart();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Failed to fetch data.");
     });
-
-  toggleBtn.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");
-    toggleBtn.textContent = body.classList.contains("dark-mode")
-      ? "Light Mode"
-      : "Dark Mode";
-  });
 }
 
+toggleBtn.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+  toggleBtn.textContent = body.classList.contains("dark-mode")
+    ? "Light Mode"
+    : "Dark Mode";
+
+  renderChart(); 
+});
+
 window.addEventListener("DOMContentLoaded", () => {
-  const type =
-    new URLSearchParams(window.location.search).get("type") || "daily";
+  const type = new URLSearchParams(window.location.search).get("type") || "daily";
   loadChart(type);
 });
