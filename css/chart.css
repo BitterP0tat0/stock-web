@@ -63,11 +63,10 @@ nav.navbar {
 }
 
 .navbar-toggler {
-  background-color: var(--menu--background-color);
-  border-color: var(--menu--background-color) !important;
-  color: var(--nav-text-color) !important;
+  background-color: var(--menu-background-color); 
+  color: var(--nav-text-color); 
+  border-color: var(--nav-text-color);
 }
-
 .navbar-brand {
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -81,8 +80,9 @@ nav.navbar {
 .navbar-nav .nav-link {
   position: relative;
   overflow: hidden;
+  color: var(--nav-text-color); 
+  transition: color 0.3s ease;
 }
-
 .navbar-nav .nav-link::after {
   content: "";
   display: block;
