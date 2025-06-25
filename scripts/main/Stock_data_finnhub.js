@@ -32,20 +32,22 @@
   const itemsPerPage = 9;
 
   const mockChartData = {
-    AAPL: {
-      labels: ['2025-06-01','2025-06-02','2025-06-03','2025-06-04','2025-06-05','2025-06-06','2025-06-07'],
-      prices: [150, 152, 153, 151, 154, 156, 157]
-    },
-    NVDA: {
-      labels: ['2025-06-01','2025-06-02','2025-06-03','2025-06-04','2025-06-05','2025-06-06','2025-06-07'],
-      prices: [270, 272, 275, 273, 276, 278, 280]
-    },
-    GOOGL: {
-      labels: ['2025-06-01','2025-06-02','2025-06-03','2025-06-04','2025-06-05','2025-06-06','2025-06-07'],
-      prices: [270, 272, 275, 293, 256, 580, 390]
-    }
-  };
-
+  AAPL: {
+    labels: ['2025-06-01', '2025-06-02', '2025-06-03', '2025-06-04', '2025-06-05', '2025-06-06', '2025-06-07'],
+    onOpenPrice: [149, 150, 152, 151, 153, 155, 156],
+    onClosePrice: [150, 152, 153, 151, 154, 156, 157]
+  },
+  NVDA: {
+    labels: ['2025-06-01', '2025-06-02', '2025-06-03', '2025-06-04', '2025-06-05', '2025-06-06', '2025-06-07'],
+    onOpenPrice: [268, 269, 271, 273, 275, 277, 278],
+    onClosePrice: [270, 272, 275, 273, 276, 278, 280]
+  },
+  GOOGL: {
+    labels: ['2025-06-01', '2025-06-02', '2025-06-03', '2025-06-04', '2025-06-05', '2025-06-06', '2025-06-07'],
+    onOpenPrice: [265, 268, 270, 272, 280, 290, 300],
+    onClosePrice: [270, 272, 275, 293, 256, 580, 390]
+  }
+};
   const ctx = document.getElementById('tradeChart').getContext('2d');
   let tradeChart;
 
@@ -60,13 +62,24 @@
         labels: data.labels,
         datasets: [{
           label: `${symbol} Close Price`,
-          data: data.prices,
+          data: data.onClosePrice,
           borderColor: 'rgba(54, 162, 235, 0.8)',
           backgroundColor: 'rgba(54, 162, 235, 0.3)',
           fill: true,
           tension: 0.3,
           pointRadius: 7
-        }]
+        }, {
+          label: `${symbol} Open Price`,
+          data: data.onOpenPrice,
+          borderColor: 'rgba(248, 113, 113, 0.8)', 
+          backgroundColor: 'rgba(248, 113, 113, 0.3)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointBackgroundColor: 'rgba(248, 113, 113, 0.6)',
+          pointBorderColor: 'rgba(248, 113, 113, 0.6)',
+        },]
       },
  
     });
@@ -178,7 +191,7 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault(); 
-      const value = input.value.trim().toUpperCase();
+      const value = input.value.trim();
       console.log('The content is:', value);
       showDetails(value);
     });
