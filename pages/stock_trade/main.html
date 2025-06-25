@@ -47,7 +47,24 @@
     </nav>
 
     <div class="container my-4">
-      <h1>Popular Trades</h1>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="mb-0">Popular Trades</h1>
+  <form id="searchForm" class="d-flex" role="search">
+  <input
+    id="tradeSearchInput"
+    class="form-control form-control-sm"
+    type="search"
+    placeholder="Search trades"
+    aria-label="Search"
+  />
+  <button
+    class="btn btn-outline-primary btn-sm ms-2 search"
+    type="submit"
+  >
+    Search
+  </button>
+</form>
+</div>
 
       <div
         id="buttons"
@@ -86,7 +103,7 @@
       function toPremiumPage() {
         window.location.href = `../premium/premium.html?username=${username}`;
       }
- 
+      
     </script>
     <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
   </body>

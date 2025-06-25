@@ -145,3 +145,8 @@ nav.navbar {
   height: 100% !important;
   display: block;
 }
+
+::placeholder {
+  color: var(--text-color);
+
+}

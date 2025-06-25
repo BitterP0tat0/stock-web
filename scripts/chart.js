@@ -95,7 +95,7 @@ function loadChart(type) {
   let functionType = "TIME_SERIES_DAILY";
   if (type === "monthly") functionType = "TIME_SERIES_MONTHLY";
   else if (type === "yearly") functionType = "TIME_SERIES_MONTHLY";
-
+  const username = new URLSearchParams(window.location.search).get("username");
   const url = `https://www.alphavantage.co/query?function=${functionType}&symbol=${symbol}&apikey=${apiKey}`;
 
   fetch(url)
@@ -107,7 +107,8 @@ function loadChart(type) {
           : data["Monthly Time Series"];
 
       if (!timeSeries) {
-        alert("API error or limit reached.");
+        alert("Limit reached or Symbol not correct.");
+        window.location.href = `../stock_trade/main.html?${username}`;
         return;
       }
 

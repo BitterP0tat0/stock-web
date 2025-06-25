@@ -172,6 +172,18 @@
       }
     });
   }
+
+  const form = document.getElementById('searchForm');
+  const input = document.getElementById('tradeSearchInput');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); 
+      const value = input.value.trim().toUpperCase();
+      console.log('The content is:', value);
+      showDetails(value);
+    });
+
+
 window.addEventListener('DOMContentLoaded', () => {
   renderChart('AAPL');
   setActiveButton('btnAAPL');
