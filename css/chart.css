@@ -1,56 +1,56 @@
- :root {
-      --bg-color: #f8f9fa;
-      --text-color: #212529;
-      --nav-bg-color: #ffffff;
-      --nav-text-color: #212529;
-      --nav-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
-      --link-hover-bg: #0d6efd1a;
-      --link-hover-color: #0d6efd;
-      --card-bg-color: #ffffff;
-      --card-text-color: #212529;
-      --card-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
-      --additional-bg-color: #e9ecef;
-      --additional-text-color: initial;
-      --button-bg-color: #0d6efd;
-      --button-hover-bg-color: #0b5ed7;
-      --footer-bg-color: #f8f9fa;
-      --footer-text-color: #6c757d;
-      --footer-border-color: #dee2e6;
-      --box-shadow-color: #ffffff;
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #212529;
+  --nav-bg-color: #ffffff;
+  --nav-text-color: #212529;
+  --nav-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  --link-hover-bg: #0d6efd1a;
+  --link-hover-color: #0d6efd;
+  --card-bg-color: #ffffff;
+  --card-text-color: #212529;
+  --card-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  --additional-bg-color: #e9ecef;
+  --additional-text-color: initial;
+  --button-bg-color: #0d6efd;
+  --button-hover-bg-color: #0b5ed7;
+  --footer-bg-color: #f8f9fa;
+  --footer-text-color: #6c757d;
+  --footer-border-color: #dee2e6;
+  --box-shadow-color: #ffffff;
 
-      --chart-bg-color: rgba(0,0,0,0.05);
-    }
+  --chart-bg-color: rgba(0, 0, 0, 0.05);
+}
 
-    body.dark-mode {
-      --bg-color: #121212;
-      --text-color: #e1e1e1;
-      --nav-bg-color: #1f1f1f;
-      --nav-text-color: #e1e1e1;
-      --nav-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
-      --link-hover-bg: #0d6efd33;
-      --link-hover-color: #66aaff;
-      --card-bg-color: #2a2a2a;
-      --card-text-color: #e1e1e1;
-      --card-shadow: 0 4px 14px rgba(0, 0, 0, 0.8);
-      --additional-bg-color: #292929;
-      --additional-text-color: #ccc;
-      --button-bg-color: #0d6efd;
-      --button-hover-bg-color: #0b5ed7;
-      --footer-bg-color: #1a1a1a;
-      --footer-text-color: #999999;
-      --footer-border-color: #333333;
-      --menu-background-color: #999999;
-      --box-shadow-color: purple;
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #e1e1e1;
+  --nav-bg-color: #1f1f1f;
+  --nav-text-color: #e1e1e1;
+  --nav-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  --link-hover-bg: #0d6efd33;
+  --link-hover-color: #66aaff;
+  --card-bg-color: #2a2a2a;
+  --card-text-color: #e1e1e1;
+  --card-shadow: 0 4px 14px rgba(0, 0, 0, 0.8);
+  --additional-bg-color: #292929;
+  --additional-text-color: #ccc;
+  --button-bg-color: #0d6efd;
+  --button-hover-bg-color: #0b5ed7;
+  --footer-bg-color: #1a1a1a;
+  --footer-text-color: #999999;
+  --footer-border-color: #333333;
+  --menu-background-color: #999999;
+  --box-shadow-color: purple;
 
-      --chart-bg-color: rgba(255,255,255,0.1);
-    }
+  --chart-bg-color: rgba(255, 255, 255, 0.1);
+}
 
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      transition: background-color 0.3s ease, color 0.3s ease;
-      min-height: 100vh;
-    }
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
 nav.navbar {
   padding: 0.8rem 1rem;
   margin: auto;
@@ -63,8 +63,8 @@ nav.navbar {
 }
 
 .navbar-toggler {
-  background-color: var(--menu-background-color); 
-  color: var(--nav-text-color); 
+  background-color: var(--menu-background-color);
+  color: var(--nav-text-color);
   border-color: var(--nav-text-color);
 }
 .navbar-brand {
@@ -80,7 +80,7 @@ nav.navbar {
 .navbar-nav .nav-link {
   position: relative;
   overflow: hidden;
-  color: var(--nav-text-color); 
+  color: var(--nav-text-color);
   transition: color 0.3s ease;
 }
 .navbar-nav .nav-link::after {
@@ -112,23 +112,22 @@ nav.navbar {
     transform: translateX(-50%) scaleX(1);
   }
 }
-    #buttons {
-      margin: 1rem;
-      text-align: center;
-    }
+#buttons {
+  margin: 1rem;
+  text-align: center;
+}
 
-    #buttons button {
-      margin: 0 0.5rem;
-    }
+#buttons button {
+  margin: 0 0.5rem;
+}
 
-    .content{
-      
-      padding-top: 10vh;
-    }
-    #chart-container {
-  width: 90vh;        
-  max-width: 100%;      
-  height: 600px;      
+.content {
+  padding-top: 1vh;
+}
+#chart-container {
+  width: 100vh;
+  max-width: 100%;
+  height: 600px;
   margin: 0 auto 3rem auto;
   padding: 2rem;
   background-color: var(--card-bg-color);
@@ -148,5 +147,4 @@ nav.navbar {
 
 ::placeholder {
   color: var(--text-color);
-
 }
