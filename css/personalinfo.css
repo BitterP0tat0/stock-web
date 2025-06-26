@@ -119,3 +119,12 @@ body.dark-mode .btn-dark:hover {
   color: var(--nav-text-color);
   background-color: var(--nav-bg-color);
 }
+footer {
+  background-color: transparent;
+  color: var(--footer-text-color);
+  border-top: 1px solid var(--footer-border-color);
+  font-size: 0.9rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  font-weight: 500;
+}
