@@ -126,7 +126,7 @@ nav.navbar {
 }
 #chart-container {
   width: 100vh;
-  max-width: 100%;
+  max-width: 100vh;
   height: 600px;
   margin: 0 auto 3rem auto;
   padding: 2rem;
@@ -140,9 +140,31 @@ nav.navbar {
 }
 
 #closePriceChart {
-  width: 100% !important;
-  height: 100% !important;
+  width: 100vh !important;
+  height: 60vh !important;
   display: block;
+}
+
+@media (max-width: 991.98px) {
+  #chart-container {
+    width: auto;
+    height: auto;
+    margin: 0 auto 3rem auto;
+    padding: 2rem;
+    background-color: var(--card-bg-color);
+    box-shadow: var(--card-shadow);
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #closePriceChart {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
 }
 
 ::placeholder {

@@ -17,7 +17,6 @@
   --footer-text-color: #6c757d;
   --footer-border-color: #dee2e6;
   --box--shadow-color: #ffffff;
-
 }
 
 body.light-mode {
@@ -40,7 +39,6 @@ body.light-mode {
   --footer-border-color: #dee2e6;
   --comment--shadow-color: rgb(0 0 0 / 0.1);
   --box--shadow-color: #ffffff;
-
 }
 
 body.dark-mode {
@@ -64,7 +62,6 @@ body.dark-mode {
   --menu--background-color: #999999;
   --comment--shadow-color: #ffffff;
   --box--shadow-color: purple;
-
 }
 
 body.dark-mode .navbar-brand:hover,
@@ -152,7 +149,7 @@ nav.navbar {
   padding: 1.5rem;
   background-color: var(--card-bg-color);
   color: var(--card-text-color);
-  box-shadow: var(--card-shadow) 3px solid; 
+  box-shadow: var(--card-shadow) 3px solid;
 }
 .card:hover {
   transform: translateY(-5px);
@@ -186,6 +183,7 @@ form {
   box-shadow: var(--card-shadow);
   display: inline-flex;
   align-items: center;
+  color: var(--card-text-color);
 }
 
 form input[type="search"] {
@@ -194,11 +192,12 @@ form input[type="search"] {
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  color: var(--card-text-color);
 }
 
 form input[type="search"]::placeholder {
-  color: var(--text-color);
-  opacity: 0.8; 
+  color: var(--card-text-color);
+  opacity: 0.8;
   transition: color 0.1s;
 }
 form input[type="search"]:focus {
@@ -221,5 +220,3 @@ form button {
 form button:hover {
   background-color: var(--button-hover-bg-color);
 }
-
-
