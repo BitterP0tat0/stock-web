@@ -223,7 +223,7 @@ footer {
   padding: 1rem 0;
   font-weight: 500;
   letter-spacing: 0.5px;
-  background-color: var(--footer-bg-color);
+  background-color: transparent;
   color: var(--footer-text-color);
   border-top: 1px solid var(--footer-border-color);
   transition: background-color 0.3s ease, color 0.3s ease,
