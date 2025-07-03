@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const user = new Signup(email, username, password);
 
-      const response = await fetch('http://localhost:8080/api/auth/sign-up', {
+      const response = await fetch('https://stock-market-api-zw2g.onrender.com/api/auth/sign-up', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

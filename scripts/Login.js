@@ -11,7 +11,7 @@ Login.addEventListener("click", async function (event) {
     if (username && password) {
       const user = new Signin(username, password);
 
-      const response = await fetch("http://localhost:8080/api/auth/sign-in", {
+      const response = await fetch("https://stock-market-api-zw2g.onrender.com/api/auth/sign-in", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
