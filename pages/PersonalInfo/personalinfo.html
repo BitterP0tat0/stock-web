@@ -43,6 +43,14 @@
             <li class="nav-item">
               <a
                 class="nav-link mt-2"
+                onclick="toPortfolioPage()"
+                style="cursor: pointer"
+                >Portfolio</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link mt-2"
                 onclick="toPremiumPage()"
                 style="cursor: pointer"
                 >Premium</a
@@ -67,7 +75,6 @@
       </div>
     </nav>
 
-    <!-- Profile Content -->
     <main class="container mt-5 mb-5">
       <div class="profile-card p-4 shadow-sm rounded">
         <div class="text-center mb-4">
@@ -250,7 +257,10 @@
         window.location.href = "../../index.html";
       }
       function toNewsPage() {
-        window.location.href = "../news/news.html";
+        window.location.href = `../news/news.html?username=${username}`;
+      }
+      function toPortfolioPage() {
+        window.location.href = `../portfolio/portfolio.html?username=${username}`;
       }
     </script>
   </body>

@@ -14,12 +14,12 @@ Login.addEventListener("click", async function (event) {
       const response = await fetch("http://localhost:8080/api/auth/sign-in", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           username: user.getUsername(),
-          password: user.getPassword()
-        })
+          password: user.getPassword(),
+        }),
       });
 
       if (!response.ok) {
@@ -31,12 +31,13 @@ Login.addEventListener("click", async function (event) {
 
       localStorage.setItem("token", data.access_token);
 
-      alert("Login successful!");
       console.log(`Token: ${data.access_token}`);
 
       document.getElementById("loginUserName").value = "";
       document.getElementById("InputPassword").value = "";
-      window.location.href = '../stock_trade/main.html?username=' + encodeURIComponent(user.getUsername());
+      window.location.href =
+        "../stock_trade/main.html?username=" +
+        encodeURIComponent(user.getUsername());
     } else {
       alert("Please fill in both fields.");
     }

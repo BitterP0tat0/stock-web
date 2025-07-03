@@ -41,6 +41,14 @@
             <li class="nav-item">
               <a
                 class="nav-link mt-2"
+                onclick="toPortfolioPage()"
+                style="cursor: pointer"
+                >Portfolio</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link mt-2"
                 onclick="toPremiumPage()"
                 style="cursor: pointer"
                 >Premium</a
@@ -90,6 +98,9 @@
       }
       function toAccountPage() {
         window.location.href = `../PersonalInfo/personalinfo.html?username=${username}`;
+      }
+      function toPortfolioPage() {
+        window.location.href = `../portfolio/portfolio.html?username=${username}`;
       }
     </script>
   </body>

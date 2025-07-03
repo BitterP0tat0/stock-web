@@ -45,6 +45,14 @@
               >
             </li>
             <li class="nav-item">
+              <a
+                class="nav-link mt-2"
+                onclick="toPortfolioPage()"
+                style="cursor: pointer"
+                >Portfolio</a
+              >
+            </li>
+            <li class="nav-item">
               <a class="nav-link mt-2" style="cursor: pointer">Premium</a>
             </li>
 
@@ -138,6 +146,9 @@
 
       function toNewsPage() {
         window.location.href = `../news/news.html?username=${username}`;
+      }
+      function toPortfolioPage() {
+        window.location.href = `../portfolio/portfolio.html?username=${username}`;
       }
     </script>
   </body>

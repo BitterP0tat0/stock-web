@@ -2,7 +2,8 @@
 // 7iuvkjj3japk0g2g is the API key used in this
 const apiKey = "APJKM04Q8Q5VU2W7";
 const h1 = document.querySelector("h1");
-const symbol = new URLSearchParams(window.location.search).get("symbol") || "MSFT";
+const symbol =
+  new URLSearchParams(window.location.search).get("symbol") || "MSFT";
 const ctx = document.getElementById("closePriceChart").getContext("2d");
 const toggleBtn = document.getElementById("mode-toggle");
 const body = document.body;
@@ -140,10 +141,11 @@ toggleBtn.addEventListener("click", () => {
     ? "Light Mode"
     : "Dark Mode";
 
-  renderChart(); 
+  renderChart();
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-  const type = new URLSearchParams(window.location.search).get("type") || "daily";
+  const type =
+    new URLSearchParams(window.location.search).get("type") || "daily";
   loadChart(type);
 });
