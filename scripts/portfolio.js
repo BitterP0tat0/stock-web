@@ -35,16 +35,14 @@ function getThemeColors() {
 
 function applyThemeColors() {
   const colors = getThemeColors();
-
+ 
   contentDiv.style.color = colors.textColor;
   contentDiv.style.backgroundColor = colors.bgColor;
-
   contentDiv.querySelectorAll(".card").forEach((card) => {
     card.style.backgroundColor = colors.cardBg;
     card.style.color = colors.cardText;
     card.style.boxShadow = colors.cardShadow;
   });
-
   document.querySelectorAll(".nav-sidebar a.nav-link").forEach((link) => {
     link.style.color = colors.navText;
     if (link.classList.contains("active")) {
@@ -54,15 +52,15 @@ function applyThemeColors() {
       link.style.backgroundColor = "transparent";
     }
   });
-
   document.querySelectorAll("table thead").forEach((thead) => {
     thead.style.backgroundColor = colors.transactionHeaderBg;
     thead.style.color = colors.textColor;
   });
-
-  document.querySelectorAll("table tbody tr").forEach((tr, i) => {
+  document.querySelectorAll("table tbody tr").forEach((tr) => {
+    const i = Number(tr.dataset.rowIndex);
     tr.style.backgroundColor =
       i % 2 === 0 ? colors.transactionRowBg : colors.bgColor;
+    tr.style.color = colors.textColor;
   });
 }
 
@@ -79,7 +77,7 @@ function toggleTheme() {
   if (btnAssets.classList.contains("active")) {
     showAssets();
   } else if (btnTransactions.classList.contains("active")) {
-    showTransactions();
+    showTransactions(currentPage);
   }
 }
 
@@ -90,6 +88,9 @@ function clearActive() {
     .querySelectorAll(".nav-sidebar a.nav-link")
     .forEach((a) => a.classList.remove("active"));
 }
+
+let currentPage = 1;
+const rowsPerPage = 5;
 
 function showAssets() {
   clearActive();
@@ -102,27 +103,9 @@ function showAssets() {
   const growthUp = true;
 
   const stocks = [
-    {
-      name: "Apple",
-      price: 175.32,
-      changePercent: 1.25,
-      up: true,
-      ratio: 0.48,
-    },
-    {
-      name: "Google",
-      price: 2834.5,
-      changePercent: -0.85,
-      up: false,
-      ratio: 0.3,
-    },
-    {
-      name: "Facebook",
-      price: 332.14,
-      changePercent: 0.45,
-      up: true,
-      ratio: 0.22,
-    },
+    { name: "Apple", price: 175.32, changePercent: 1.25, up: true, ratio: 0.48 },
+    { name: "Google", price: 2834.5, changePercent: -0.85, up: false, ratio: 0.3 },
+    { name: "Facebook", price: 332.14, changePercent: 0.45, up: true, ratio: 0.22 },
   ];
 
   const assetBreakdown = {
@@ -140,20 +123,17 @@ function showAssets() {
     .map(
       (stock) => `
     <div class="col-md-4 mb-3">
-    <div class="card" style="box-shadow: var(--card-shadow);">
-      <div class="card-body">
-        <h5 class="card-title">${stock.name}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">$${stock.price.toFixed(
-          2
-        )}</h6>
-        <p class="card-text text-${stock.up ? "success" : "danger"}">
-          <i class="bi bi-arrow-${stock.up ? "up" : "down"}"></i>
-          ${stock.changePercent.toFixed(2)}%
-        </p>
+      <div class="card" style="box-shadow: var(--card-shadow);">
+        <div class="card-body">
+          <h5 class="card-title">${stock.name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">$${stock.price.toFixed(2)}</h6>
+          <p class="card-text text-${stock.up ? "success" : "danger"}">
+            <i class="bi bi-arrow-${stock.up ? "up" : "down"}"></i>
+            ${stock.changePercent.toFixed(2)}%
+          </p>
+        </div>
       </div>
-    </div>
-  </div>
-`
+    </div>`
     )
     .join("");
 
@@ -194,16 +174,10 @@ function showAssets() {
 
   applyThemeColors();
 
-  if (assetDoughnutChartInstance) {
-    assetDoughnutChartInstance.destroy();
-  }
-  if (incomeLineChartInstance) {
-    incomeLineChartInstance.destroy();
-  }
+  if (assetDoughnutChartInstance) assetDoughnutChartInstance.destroy();
+  if (incomeLineChartInstance) incomeLineChartInstance.destroy();
 
-  const doughnutCtx = document
-    .getElementById("assetDoughnutChart")
-    .getContext("2d");
+  const doughnutCtx = document.getElementById("assetDoughnutChart").getContext("2d");
   assetDoughnutChartInstance = new Chart(doughnutCtx, {
     type: "doughnut",
     data: assetBreakdown,
@@ -211,16 +185,9 @@ function showAssets() {
       responsive: true,
       maintainAspectRatio: true,
       plugins: {
-        legend: {
-          position: "bottom",
-          labels: {
-            color: colors.textColor, 
-          },
-        },
+        legend: { position: "bottom", labels: { color: colors.textColor } },
         tooltip: {
-          callbacks: {
-            label: (context) => `${context.label}: ${context.parsed}%`,
-          },
+          callbacks: { label: (ctx) => `${ctx.label}: ${ctx.parsed}%` },
           bodyColor: colors.textColor,
           titleColor: colors.textColor,
           backgroundColor: colors.cardBg,
@@ -251,95 +218,111 @@ function showAssets() {
       responsive: true,
       maintainAspectRatio: false,
       scales: {
-        x: {
-          ticks: { color: colors.textColor },
-          grid: { color: colors.gridColor },
-        },
-        y: {
-          ticks: { color: colors.textColor },
-          grid: { color: colors.gridColor },
-        },
+        x: { ticks: { color: colors.textColor }, grid: { color: colors.gridColor } },
+        y: { ticks: { color: colors.textColor }, grid: { color: colors.gridColor } },
       },
-      plugins: {
-        legend: {
-          labels: {
-            color: colors.textColor,
-          },
-        },
-      },
+      plugins: { legend: { labels: { color: colors.textColor } } },
     },
   });
 }
 
-function showTransactions() {
+function showTransactions(page = 1) {
   clearActive();
   btnTransactions.classList.add("active");
 
   const transactions = [
-    { date: "2025-06-01", type: "Buy", asset: "Apple", amount: 10000 },
-    { date: "2025-06-05", type: "Sell", asset: "Google", amount: 5000 },
-    { date: "2025-06-10", type: "Buy", asset: "Facebook", amount: 20000 },
+    { date: "2025-06-01", type: "Buy", asset: "Apple", quantity: 10, price: 172.3 },
+    { date: "2025-06-03", type: "Sell", asset: "Google", quantity: 5, price: 2800 },
+    { date: "2025-06-07", type: "Buy", asset: "Facebook", quantity: 20, price: 330 },
+    { date: "2025-06-10", type: "Sell", asset: "Apple", quantity: 5, price: 175 },
+    { date: "2025-06-15", type: "Buy", asset: "Google", quantity: 2, price: 2850 },
+    { date: "2025-06-18", type: "Buy", asset: "Facebook", quantity: 10, price: 335 },
+    { date: "2025-06-20", type: "Sell", asset: "Apple", quantity: 5, price: 178 },
+    { date: "2025-06-22", type: "Buy", asset: "Google", quantity: 3, price: 2900 },
   ];
 
-  if (assetDoughnutChartInstance) {
-    assetDoughnutChartInstance.destroy();
-    assetDoughnutChartInstance = null;
-  }
-  if (incomeLineChartInstance) {
-    incomeLineChartInstance.destroy();
-    incomeLineChartInstance = null;
-  }
+  const colors = getThemeColors();
 
-  const rows = transactions
+  const startIdx = (page - 1) * rowsPerPage;
+  const endIdx = startIdx + rowsPerPage;
+  const pagedTx = transactions.slice(startIdx, endIdx);
+
+  const rowsHtml = pagedTx
     .map(
-      (t) => `
-    <tr>
-      <td>${t.date}</td>
-      <td>${t.type}</td>
-      <td>${t.asset}</td>
-      <td>${t.amount.toLocaleString()} USD</td>
-    </tr>
-  `
+      (tx, idx) => `
+    <tr data-row-index="${idx}">
+      <td style = "background-color: var(--card-bg-color); color:var(--text-color)">${tx.date}</td>
+      <td style = "background-color: var(--card-bg-color); color:var(--text-color)">${tx.type}</td>
+      <td style = "background-color: var(--card-bg-color); color:var(--text-color)">${tx.asset}</td>
+      <td style = "background-color: var(--card-bg-color); color:var(--text-color)">${tx.quantity}</td>
+      <td style = "background-color: var(--card-bg-color); color:var(--text-color)">$${tx.price.toFixed(2)}</td>
+    </tr>`
     )
     .join("");
 
+  const totalPages = Math.ceil(transactions.length / rowsPerPage);
+
+  let paginationHtml = "";
+  for (let i = 1; i <= totalPages; i++) {
+    paginationHtml += `<button class="btn btn-sm mx-1 ${
+      i === page ? "btn-primary" : "btn-outline-primary"
+    }" data-page="${i}">${i}</button>`;
+  }
+
   contentDiv.innerHTML = `
-    <h3>Transactions</h3>
-    <table class="table table-striped table-hover mt-3">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Type</th>
-          <th>Asset</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>
+    <h3 class="p-3">Transaction History</h3>
+    <div class="card shadow-sm p-3">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr >
+             <th style = "background-color: var(--card-bg-color); color:var(--text-color)">Date</th>
+             <th style = "background-color: var(--card-bg-color); color:var(--text-color)">Type</th>
+             <th style = "background-color: var(--card-bg-color); color:var(--text-color)">Asset</th>
+            <th style = "background-color: var(--card-bg-color); color:var(--text-color)">Quantity</th>
+            <th style = "background-color: var(--card-bg-color); color:var(--text-color)">Price (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rowsHtml}
+        </tbody>
+      </table>
+      <div class="pagination d-flex justify-content-center mt-3">
+        ${paginationHtml}
+      </div>
+    </div>
   `;
 
   applyThemeColors();
+
+  document
+    .querySelectorAll(".pagination button")
+    .forEach((btn) =>
+      btn.addEventListener("click", (e) => {
+        const p = Number(e.target.dataset.page);
+        if (p !== currentPage) {
+          currentPage = p;
+          showTransactions(currentPage);
+        }
+      })
+    );
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-    modeToggle.textContent = "Light Mode";
-  } else {
-    modeToggle.textContent = "Dark Mode";
-  }
-
-  applyThemeColors();
+btnAssets.addEventListener("click", () => {
+  currentPage = 1;
   showAssets();
-
-  btnAssets.addEventListener("click", (e) => {
-    e.preventDefault();
-    showAssets();
-  });
-
-  btnTransactions.addEventListener("click", (e) => {
-    e.preventDefault();
-    showTransactions();
-  });
 });
+btnTransactions.addEventListener("click", () => {
+  currentPage = 1;
+  showTransactions(currentPage);
+});
+
+
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  document.body.classList.add("dark-mode");
+  modeToggle.textContent = "Light Mode";
+} else {
+  modeToggle.textContent = "Dark Mode";
+}
+applyThemeColors();
+showAssets();

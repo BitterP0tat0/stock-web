@@ -216,3 +216,19 @@ nav.navbar {
   transition: background-color 0.3s ease, color 0.3s ease;
   width: 100%;
 }
+table thead {
+  background-color: var(--transaction-header-bg-color);
+  color: var(--text-color);
+}
+
+table tbody tr:nth-child(even) {
+  background-color: var(--transaction-row-bg-color);
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: var(--bg-color);
+}
+
+table tbody tr, table tbody td {
+  color: var(--text-color);
+}
