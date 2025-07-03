@@ -214,7 +214,5 @@ nav.navbar {
   border-radius: 8px;
   margin: 30px;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-.contentDiv {
-  background-color: var(--bg-color);
+  width: 100%;
 }

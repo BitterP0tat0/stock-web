@@ -76,7 +76,6 @@ function toggleTheme() {
     localStorage.setItem("theme", "light");
   }
   applyThemeColors();
-  // 主题切换后，重新渲染当前页面内容（防止图表颜色不刷新）
   if (btnAssets.classList.contains("active")) {
     showAssets();
   } else if (btnTransactions.classList.contains("active")) {
@@ -195,7 +194,6 @@ function showAssets() {
 
   applyThemeColors();
 
-  // 销毁旧图表，防止叠加
   if (assetDoughnutChartInstance) {
     assetDoughnutChartInstance.destroy();
   }
@@ -203,7 +201,6 @@ function showAssets() {
     incomeLineChartInstance.destroy();
   }
 
-  // 创建 doughnut 图表
   const doughnutCtx = document
     .getElementById("assetDoughnutChart")
     .getContext("2d");
@@ -217,7 +214,7 @@ function showAssets() {
         legend: {
           position: "bottom",
           labels: {
-            color: colors.textColor, // 这里颜色生效
+            color: colors.textColor, 
           },
         },
         tooltip: {
@@ -232,7 +229,6 @@ function showAssets() {
     },
   });
 
-  // 创建折线图
   const incomeData = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
     datasets: [
@@ -285,7 +281,6 @@ function showTransactions() {
     { date: "2025-06-10", type: "Buy", asset: "Facebook", amount: 20000 },
   ];
 
-  // 销毁资产页图表，释放资源
   if (assetDoughnutChartInstance) {
     assetDoughnutChartInstance.destroy();
     assetDoughnutChartInstance = null;
