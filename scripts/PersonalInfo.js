@@ -31,10 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(data => {
           // Inject into the page
-          document.querySelector("h3").textContent = data.fullName || "User";
-          document.querySelector("p").innerHTML = `
-            Username: User name<br />
-            Email: ${data.email}
+          document.querySelector("h4").textContent = data.fullName || "User";
+          document.querySelector("h4").innerHTML = `
+            ${data.email}
           `;
         })
         .catch(err => {
