@@ -14,7 +14,7 @@
   <body class="p-4 display-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand" href="">Finance</a>
+        <a class="navbar-brand" href="" data-i18n="brand">Finance</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -34,6 +34,7 @@
                 class="nav-link mt-2"
                 onclick="toAccountPage()"
                 style="cursor: pointer"
+                data-i18n="my_account"
                 >My Account</a
               >
             </li>
@@ -43,6 +44,7 @@
                 class="nav-link mt-2"
                 onclick="toPortfolioPage()"
                 style="cursor: pointer"
+                data-i18n="portfolio"
                 >Portfolio</a
               >
             </li>
@@ -51,6 +53,7 @@
                 class="nav-link mt-2"
                 onclick="toPremiumPage()"
                 style="cursor: pointer"
+                data-i18n="premium"
                 >Premium</a
               >
             </li>
@@ -60,12 +63,14 @@
                 class="nav-link mt-2"
                 onclick="toNewsPage()"
                 style="cursor: pointer"
+                data-i18n="news"
                 >News</a
               >
             </li>
             <button
               id="mode-toggle"
-              class="btn btn-outline-secondary ms-2 mt-2"
+              class="btn btn-outline-secondary ms-2 mt-2 lang-toggle"
+              data-i18n="dark_mode"
             >
               Dark Mode
             </button>
@@ -76,7 +81,7 @@
 
     <div class="container my-4">
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="mb-0">Popular Trades</h1>
+        <h1 class="mb-0" data-i18n="popular_trades">Popular Trades</h1>
         <form id="searchForm" class="d-flex" role="search">
           <input
             id="tradeSearchInput"
@@ -84,10 +89,12 @@
             type="search"
             placeholder="Search trades"
             aria-label="Search"
+            data-i18n-placeholder="search_trades"
           />
           <button
             class="btn btn-outline-primary btn-sm ms-2 search"
             type="submit"
+            data-i18n="search"
           >
             Search
           </button>
@@ -98,13 +105,9 @@
         id="buttons"
         class="d-flex justify-content-center align-items-center gap-3 my-3"
       >
-        <button id="btnAAPL" class="btn btn-primary btn-sm">AAPL</button>
-        <button id="btnNVDA" class="btn btn-outline-primary btn-sm">
-          NVDA
-        </button>
-        <button id="btnGOOGL" class="btn btn-outline-primary btn-sm">
-          GOOGL
-        </button>
+        <button id="btnAAPL" class="btn btn-primary btn-sm" data-i18n="aapl">AAPL</button>
+        <button id="btnNVDA" class="btn btn-outline-primary btn-sm" data-i18n="nvda">NVDA</button>
+        <button id="btnGOOGL" class="btn btn-outline-primary btn-sm" data-i18n="googl">GOOGL</button>
       </div>
 
       <div id="tradeChartContainer" class="mb-4">
@@ -122,6 +125,10 @@
     <script src="../../scripts/main/balance.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+      import { initI18n } from '../../scripts/i18n.js';
+      initI18n();
+    </script>
     <script>
       const email = new URLSearchParams(window.location.search).get("email")
       function toAccountPage() {

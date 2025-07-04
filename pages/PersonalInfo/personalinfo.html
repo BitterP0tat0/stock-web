@@ -20,9 +20,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand" onclick="toMainPage()" style="cursor: pointer"
-          >Finance</a
-        >
+        <a class="navbar-brand" onclick="toMainPage()" style="cursor: pointer" data-i18n="brand">Finance</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -38,13 +36,14 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto mb-4 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link mt-2" style="cursor: pointer">My Account</a>
+              <a class="nav-link mt-2" style="cursor: pointer" data-i18n="my_account">My Account</a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link mt-2"
                 onclick="toPortfolioPage()"
                 style="cursor: pointer"
+                data-i18n="portfolio"
                 >Portfolio</a
               >
             </li>
@@ -53,6 +52,7 @@
                 class="nav-link mt-2"
                 onclick="toPremiumPage()"
                 style="cursor: pointer"
+                data-i18n="premium"
                 >Premium</a
               >
             </li>
@@ -61,12 +61,14 @@
                 class="nav-link mt-2"
                 onclick="toNewsPage()"
                 style="cursor: pointer"
+                data-i18n="news"
                 >News</a
               >
             </li>
             <button
               id="mode-toggle"
-              class="btn btn-outline-secondary ms-2 mt-2"
+              class="btn btn-outline-secondary ms-2 mt-2 lang-toggle"
+              data-i18n="dark_mode"
             >
               Dark Mode
             </button>
@@ -83,28 +85,28 @@
             alt="Profile picture"
             class="profile-pic mb-3"
           />
-          <h3></h3>
-          <p></p>
+          <h3 data-i18n="personal_info"></h3>
+          <p data-i18n="personal_info_desc"></p>
         </div>
 
         <div class="section">
-          <h5><i class="bi bi-person-lines-fill me-2"></i>Personal Details</h5>
+          <h5><i class="bi bi-person-lines-fill me-2"></i><span data-i18n="personal_details">Personal Details</span></h5>
           <div class="bordered-box mt-2">
             <ul class="list-unstyled mb-0">
-              <li><i class="bi bi-geo-alt me-2"></i>Change address</li>
-              <li><i class="bi bi-lock me-2"></i>Change password</li>
-              <li><i class="bi bi-envelope me-2"></i>Change email</li>
-              <li><i class="bi bi-phone me-2"></i>Change phone number</li>
+              <li><i class="bi bi-geo-alt me-2"></i><span data-i18n="change_address">Change address</span></li>
+              <li><i class="bi bi-lock me-2"></i><span data-i18n="change_password">Change password</span></li>
+              <li><i class="bi bi-envelope me-2"></i><span data-i18n="change_email">Change email</span></li>
+              <li><i class="bi bi-phone me-2"></i><span data-i18n="change_phone">Change phone number</span></li>
             </ul>
           </div>
         </div>
 
         <div class="section mt-4">
-          <h5><i class="bi bi-gear me-2"></i>App Settings</h5>
+          <h5><i class="bi bi-gear me-2"></i><span data-i18n="app_settings">App Settings</span></h5>
           <div class="bordered-box mt-2">
             <ul class="list-unstyled mb-0">
               <li class="d-flex justify-content-between align-items-center">
-                <span><i class="bi bi-moon me-2"></i>Dark mode</span>
+                <span><i class="bi bi-moon me-2"></i><span data-i18n="dark_mode">Dark mode</span></span>
                 <div class="form-check form-switch">
                   <input
                     class="form-check-input"
@@ -114,24 +116,28 @@
                 </div>
               </li>
               <li class="d-flex justify-content-between align-items-center">
-                <span><i class="bi bi-globe me-2"></i>Languages</span>
+                <span><i class="bi bi-globe me-2"></i><span data-i18n="languages">Languages</span></span>
                 <div class="dropdown">
                   <button
                     class="btn btn-dark btn-sm dropdown-toggle lang-toggle"
                     type="button"
                     data-bs-toggle="dropdown"
+                    id="langDropdownBtn"
+                    data-i18n="lang_toggle"
                   >
                     EN
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">DE</a></li>
-                    <li><a class="dropdown-item" href="#">FR</a></li>
-                    <li><a class="dropdown-item" href="#">ES</a></li>
+                    <li><a class="dropdown-item lang-toggle" href="#" data-lang="en" data-i18n="lang_en">EN</a></li>
+                    <li><a class="dropdown-item lang-toggle" href="#" data-lang="de" data-i18n="lang_de">DE</a></li>
+                    <li><a class="dropdown-item lang-toggle" href="#" data-lang="fr" data-i18n="lang_fr">FR</a></li>
+                    <li><a class="dropdown-item lang-toggle" href="#" data-lang="es" data-i18n="lang_es">ES</a></li>
+                    <li><a class="dropdown-item lang-toggle" href="#" data-lang="zh" data-i18n="lang_zh">CN</a></li>
                   </ul>
                 </div>
               </li>
-              <li><i class="bi bi-chat-left-text me-2"></i>Feedback</li>
-              <li><i class="bi bi-question-circle me-2"></i>Help</li>
+              <li><i class="bi bi-chat-left-text me-2"></i><span data-i18n="feedback">Feedback</span></li>
+              <li><i class="bi bi-question-circle me-2"></i><span data-i18n="help">Help</span></li>
             </ul>
           </div>
         </div>
@@ -141,6 +147,7 @@
             class="btn btn-outline-danger"
             data-bs-toggle="modal"
             data-bs-target="#Delete"
+            data-i18n="delete_account"
           >
             Delete account
           </button>
@@ -148,6 +155,7 @@
             class="btn btn-dark"
             data-bs-toggle="modal"
             data-bs-target="#Logout"
+            data-i18n="logout"
           >
             Log Out
           </button>
@@ -156,7 +164,7 @@
     </main>
 
     <footer class="text-center py-4">
-      <small>&copy; 2025 Finance. All rights reserved.</small>
+      <small data-i18n="copyright">&copy; 2025 Finance. All rights reserved.</small>
     </footer>
 
     <div
@@ -169,7 +177,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="LogoutLabel">Log Out</h5>
+            <h5 class="modal-title" id="LogoutLabel" data-i18n="logout">Log Out</h5>
             <button
               type="button"
               class="btn-close"
@@ -186,6 +194,7 @@
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
+              data-i18n="close"
             >
               Close
             </button>
@@ -193,6 +202,7 @@
               type="button"
               onclick="toIndexPage()"
               class="btn btn-primary"
+              data-i18n="logout"
             >
               Log out
             </button>
@@ -211,7 +221,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="DeleteLabel">Delete Account</h5>
+            <h5 class="modal-title" id="DeleteLabel" data-i18n="delete_account">Delete Account</h5>
             <button
               type="button"
               class="btn-close"
@@ -228,10 +238,11 @@
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
+              data-i18n="cancel"
             >
               Cancel
             </button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-danger" data-i18n="delete">Delete</button>
           </div>
         </div>
       </div>
@@ -239,9 +250,12 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../scripts/Navigatorbar/Navigation.js"></script>
+    <script type="module">
+      import { initI18n } from '../../scripts/i18n.js';
+      initI18n();
+    </script>
     <script type="module" src="../../scripts/PersonalInfo.js"></script>
     <script>
       const email = new URLSearchParams(window.location.search).get("email")

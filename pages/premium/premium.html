@@ -19,9 +19,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand" onclick="toMainPage()" style="cursor: pointer"
-          >Finance</a
-        >
+        <a class="navbar-brand" onclick="toMainPage()" style="cursor: pointer" data-i18n="brand">Finance</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -41,6 +39,7 @@
                 class="nav-link mt-2"
                 onclick="toAccountPage()"
                 style="cursor: pointer"
+                data-i18n="my_account"
                 >My Account</a
               >
             </li>
@@ -49,11 +48,12 @@
                 class="nav-link mt-2"
                 onclick="toPortfolioPage()"
                 style="cursor: pointer"
+                data-i18n="portfolio"
                 >Portfolio</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link mt-2" style="cursor: pointer">Premium</a>
+              <a class="nav-link mt-2" style="cursor: pointer" data-i18n="premium">Premium</a>
             </li>
 
             <li class="nav-item">
@@ -61,12 +61,14 @@
                 class="nav-link mt-2"
                 style="cursor: pointer"
                 onclick="toNewsPage()"
+                data-i18n="news"
                 >News</a
               >
             </li>
             <button
               id="mode-toggle"
-              class="btn btn-outline-secondary ms-2 mt-2"
+              class="btn btn-outline-secondary ms-2 mt-2 lang-toggle"
+              data-i18n="dark_mode"
             >
               Dark Mode
             </button>
@@ -78,34 +80,33 @@
     <!-- Main Content -->
     <main class="container mt-5 content">
       <div class="premium-header">
-        <h2>Unlock Premium Features</h2>
-        <p>More insights. No ads. Exclusive tools</p>
-        <button class="btn upgrade-btn fw-bold mt-2">Upgrade Now</button>
+        <h2 data-i18n="unlock_premium">Unlock Premium Features</h2>
+        <p data-i18n="premium_desc">More insights. No ads. Exclusive tools</p>
+        <button class="btn upgrade-btn fw-bold mt-2" data-i18n="upgrade_now">Upgrade Now</button>
       </div>
 
       <div>
         <div class="col-md-8 align-items-center">
           <ul class="list-unstyled feature-list">
             <li>
-              <i class="bi bi-bar-chart-line-fill"></i> Advanced analytics &
-              trends
+              <i class="bi bi-bar-chart-line-fill"></i> <span data-i18n="advanced_analytics">Advanced analytics & trends</span>
             </li>
-            <li><i class="bi bi-x-circle-fill"></i> Ad-free experience</li>
-            <li><i class="bi bi-bell-fill"></i> Real-time alerts</li>
+            <li><i class="bi bi-x-circle-fill"></i> <span data-i18n="ad_free">Ad-free experience</span></li>
+            <li><i class="bi bi-bell-fill"></i> <span data-i18n="realtime_alerts">Real-time alerts</span></li>
             <li>
-              <i class="bi bi-megaphone-fill"></i> Early access to market events
+              <i class="bi bi-megaphone-fill"></i> <span data-i18n="early_access">Early access to market events</span>
             </li>
           </ul>
 
           <div class="subscribe-card">
             <div class="pricing-toggle">
-              <button class="btn monthly-btn">Monthly</button>
-              <button class="btn yearly-btn">
+              <button class="btn monthly-btn" data-i18n="monthly">Monthly</button>
+              <button class="btn yearly-btn" data-i18n="yearly">
                 Yearly <span class="badge yearly-badge">15%</span>
               </button>
             </div>
-            <h5 class="mt-4">Premium €9.99/month</h5>
-            <button class="btn subscribe-btn fw-bold">Subscribe</button>
+            <h5 class="mt-4" data-i18n="premium_price">Premium €9.99/month</h5>
+            <button class="btn subscribe-btn fw-bold" data-i18n="subscribe">Subscribe</button>
           </div>
         </div>
       </div>
@@ -113,7 +114,7 @@
 
     <footer class="text-center py-4 mt-5">
       <div class="container">
-        <small>&copy; 2025 Finance. All rights reserved.</small>
+        <small data-i18n="copyright">&copy; 2025 Finance. All rights reserved.</small>
       </div>
     </footer>
 
@@ -149,6 +150,11 @@
       function toPortfolioPage() {
         window.location.href = `../portfolio/portfolio.html?email=${email}`;
       }
+    </script>
+
+    <script type="module">
+      import { initI18n } from '../../scripts/i18n.js';
+      initI18n();
     </script>
   </body>
 </html>

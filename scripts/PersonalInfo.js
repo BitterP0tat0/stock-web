@@ -47,4 +47,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   fetchUserInfo();
+
+  async function loadLocale(lang) {
+    const response = await fetch(`../../locales/${lang}.json`);
+    return response.json();
+  }
+
+  function applyTranslations(translations) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[key]) {
+        el.textContent = translations[key];
+      }
+    });
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem('lang', lang);
+    loadLocale(lang).then(applyTranslations);
+  }
+
+  // 初始化语言
+  const lang = localStorage.getItem('lang') || 'en';
+  loadLocale(lang).then(applyTranslations);
+
+  // 语言切换事件
+  // 监听所有 .lang-toggle 按钮
+  setTimeout(() => {
+    document.querySelectorAll('.lang-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        let selectedLang = btn.getAttribute('data-lang');
+        if (!selectedLang) {
+          selectedLang = btn.textContent.trim().toLowerCase();
+        }
+        setLanguage(selectedLang);
+        // location.reload(); // 如需刷新页面可取消注释
+      });
+    });
+  }, 100);
 });
