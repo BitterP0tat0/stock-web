@@ -11,6 +11,7 @@ let chartInstance = null;
 let cachedData = { labels: [], closePrices: [], openPrices: [] };
 
 h1.textContent = `Stock Chart for ${symbol.toUpperCase()}`;
+const email = new URLSearchParams(window.location.search).get("email")
 
 function formatDate(dateStr, type) {
   const [year, month, day] = dateStr.split("-");
@@ -109,7 +110,7 @@ function loadChart(type) {
 
       if (!timeSeries) {
         alert("Limit reached or Symbol not correct.");
-        window.location.href = `../stock_trade/main.html?${username}`;
+        window.location.href = `../stock_trade/main.html?email=${email}`;
         return;
       }
 

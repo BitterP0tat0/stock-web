@@ -3,6 +3,7 @@
     const tradeTableContainer = document.getElementById('tradeTableContainer');
     const paginationContainer = document.getElementById('pagination');
     const username = new URLSearchParams(window.location.search).get('username') || 'guest';
+    const email = new URLSearchParams(window.location.search).get("email")
 
     const symbolsToSubscribe = [
       'AAPL','GOOGL','MSFT','AMZN','TSLA','FB','NFLX','NVDA','BABA','INTC',
@@ -144,14 +145,12 @@
     }
 
     function showDetails(symbol) {
-      window.location.href = `../chart/chart.html?symbol=${encodeURIComponent(symbol)}&username=${encodeURIComponent(username)}`;
+      window.location.href = `../chart/chart.html?symbol=${encodeURIComponent(symbol)}&email=${encodeURIComponent(email)}`;
     }
 
-    // 监听 Finnhub WebSocket 事件
     socket.addEventListener('open', () => {
       console.log('Connected to Finnhub WebSocket');
 
-      // 订阅所有股票符号
       symbolsToSubscribe.forEach(symbol => {
         socket.send(JSON.stringify({ type: 'subscribe', symbol }));
       });

@@ -66,12 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
     loadLocale(lang).then(applyTranslations);
   }
 
-  // 初始化语言
   const lang = localStorage.getItem('lang') || 'en';
   loadLocale(lang).then(applyTranslations);
 
-  // 语言切换事件
-  // 监听所有 .lang-toggle 按钮
+ 
   setTimeout(() => {
     document.querySelectorAll('.lang-toggle').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -80,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
           selectedLang = btn.textContent.trim().toLowerCase();
         }
         setLanguage(selectedLang);
-        // location.reload(); // 如需刷新页面可取消注释
+        // location.reload(); // 
       });
     });
   }, 100);
