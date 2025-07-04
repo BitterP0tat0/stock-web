@@ -130,20 +130,27 @@
       initI18n();
     </script>
     <script>
-      const email = new URLSearchParams(window.location.search).get("email")
       function toAccountPage() {
+        const email = new URLSearchParams(window.location.search).get("email")
+
         window.location.href = `../PersonalInfo/personalinfo.html?email=${email}`;
       }
 
       function toPremiumPage() {
+        const email = new URLSearchParams(window.location.search).get("email")
+
         window.location.href = `../premium/premium.html?email=${email}`;
       }
 
       function toNewsPage() {
+        const email = new URLSearchParams(window.location.search).get("email")
+
         window.location.href = `../news/news.html?email=${email}`;
       }
 
       function toPortfolioPage() {
+        const email = new URLSearchParams(window.location.search).get("email")
+
         window.location.href = `../portfolio/portfolio.html?email=${email}`;
       }
     </script>

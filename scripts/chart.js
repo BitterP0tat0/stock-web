@@ -94,6 +94,8 @@ function renderChart() {
 }
 
 function loadChart(type) {
+  const email = new URLSearchParams(window.location.search).get("email")
+
   let functionType = "TIME_SERIES_DAILY";
   if (type === "monthly") functionType = "TIME_SERIES_MONTHLY";
   else if (type === "yearly") functionType = "TIME_SERIES_MONTHLY";
