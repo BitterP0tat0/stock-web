@@ -1,10 +1,9 @@
 export default class Signup {
-  constructor(email, username, password) {
-    if (!email || !username || !password) {
+  constructor(email,password) {
+    if (!email || !password) {
       throw new Error("All fields are required.");
     }
     this.email = email;
-    this.username = username;
     this.password = password;
   }
 
@@ -17,14 +16,6 @@ export default class Signup {
     this.email = email;
   }
 
-  getName() {
-    return this.username;
-  }
-
-  setName(username) {
-    if (!username) throw new Error("Username cannot be empty.");
-    this.username = username;
-  }
 
   getPassword() {
     return this.password;

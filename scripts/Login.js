@@ -4,12 +4,12 @@ const Login = document.getElementById("login");
 
 Login.addEventListener("click", async function (event) {
   event.preventDefault();
-  const username = document.getElementById("loginUserName").value;
+  const email = document.getElementById("loginEmail").value;
   const password = document.getElementById("InputPassword").value;
 
   try {
-    if (username && password) {
-      const user = new Signin(username, password);
+    if (email && password) {
+      const user = new Signin(email, password);
 
       const response = await fetch("https://stock-market-api-zw2g.onrender.com/api/auth/sign-in", {
         method: "POST",
@@ -17,7 +17,7 @@ Login.addEventListener("click", async function (event) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: user.getUsername(),
+          email: user.getEmail(),
           password: user.getPassword(),
         }),
       });
@@ -33,11 +33,11 @@ Login.addEventListener("click", async function (event) {
 
       console.log(`Token: ${data.access_token}`);
 
-      document.getElementById("loginUserName").value = "";
+      document.getElementById("loginEmail").value = "";
       document.getElementById("InputPassword").value = "";
       window.location.href =
-        "../stock_trade/main.html?username=" +
-        encodeURIComponent(user.getUsername());
+        "../stock_trade/main.html?email=" +
+        encodeURIComponent(user.getEmail());
     } else {
       alert("Please fill in both fields.");
     }

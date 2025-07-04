@@ -244,23 +244,22 @@
     <script src="../../scripts/Navigatorbar/Navigation.js"></script>
     <script type="module" src="../../scripts/PersonalInfo.js"></script>
     <script>
-      const username = new URLSearchParams(window.location.search).get(
-        "username"
-      );
+      const email = new URLSearchParams(window.location.search).get("email")
+
       function toMainPage() {
-        window.location.href = `../stock_trade/main.html?username=${username}`;
+        window.location.href = `../stock_trade/main.html?email=${email}`;
       }
       function toPremiumPage() {
-        window.location.href = `../premium/premium.html?username=${username}`;
+        window.location.href = `../premium/premium.html?email=${email}`;
       }
       function toIndexPage() {
         window.location.href = "../../index.html";
       }
       function toNewsPage() {
-        window.location.href = `../news/news.html?username=${username}`;
+        window.location.href = `../news/news.html?email=${email}`;
       }
       function toPortfolioPage() {
-        window.location.href = `../portfolio/portfolio.html?username=${username}`;
+        window.location.href = `../portfolio/portfolio.html?email=${email}`;
       }
     </script>
   </body>

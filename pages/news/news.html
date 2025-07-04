@@ -15,7 +15,7 @@
   <body class="p-4 display-flex flex-column light-mode">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand" onclick="toMainPage()">Finance</a>
+        <a class="navbar-brand" onclick="toMainPage()" style="cursor: pointer">Finance</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -87,20 +87,19 @@
     <script src="../../scripts/news.js"></script>
 
     <script>
-      const username = new URLSearchParams(window.location.search).get(
-        "username"
-      );
+      const email = new URLSearchParams(window.location.search).get("email")
+
       function toMainPage() {
-        window.location.href = `../stock_trade/main.html?username=${username}`;
+        window.location.href = `../stock_trade/main.html?email=${email}`;
       }
       function toPremiumPage() {
-        window.location.href = `../premium/premium.html?username=${username}`;
+        window.location.href = `../premium/premium.html?email=${email}`;
       }
       function toAccountPage() {
-        window.location.href = `../PersonalInfo/personalinfo.html?username=${username}`;
+        window.location.href = `../PersonalInfo/personalinfo.html?email=${email}`;
       }
       function toPortfolioPage() {
-        window.location.href = `../portfolio/portfolio.html?username=${username}`;
+        window.location.href = `../portfolio/portfolio.html?email=${email}`;
       }
      
     </script>

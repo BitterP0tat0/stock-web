@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("You must be logged in.");
       window.location.href = "../login/login.html";
     } else {
-      fetch("http://localhost:8080/api/auth/me", {
+      fetch("https://stock-market-api-zw2g.onrender.com/api/auth/me", {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json"
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // Inject into the page
           document.querySelector("h3").textContent = data.fullName || "User";
           document.querySelector("p").innerHTML = `
-            Username: ${data.username}<br />
+            Username: User name<br />
             Email: ${data.email}
           `;
         })

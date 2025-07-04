@@ -1,20 +1,20 @@
 export default class User {
-  constructor(username, password) {
-    if (!username || !password) {
-      throw new Error("Username and password are required.");
+  constructor(email, password) {
+    if (!email || !password) {
+      throw new Error("Email and password are required.");
     }
-    this.username = username;
+    this.email = email;
     this.password = password;
   }
   // Getters and setters
-  getUsername() {
-    return this.username;
+  getEmail() {
+    return this.email;
   }
-  setUsername(username) {
-    if (!username) {
-      throw new Error("Username cannot be empty.");
+  setEmail(email) {
+    if (!email) {
+      throw new Error("Email cannot be empty.");
     }
-    this.username = username;
+    this.email = email;
   }
   getPassword() {
     return this.password;

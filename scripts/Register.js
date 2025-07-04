@@ -1,5 +1,4 @@
 import Signup from '../Dto/Signup.js';
-
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form.form');
 
@@ -7,11 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
 
     const email = document.getElementById('registerEmail').value.trim();
-    const username = document.getElementById('registerUserName').value.trim();
     const password = document.getElementById('InputPassword1').value.trim();
+    const confirmPassword = document.getElementById('InputPassword2').value.trim();
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
 
     try {
-      const user = new Signup(email, username, password);
+      const user = new Signup(email, password);
 
       const response = await fetch('https://stock-market-api-zw2g.onrender.com/api/auth/sign-up', {
         method: 'POST',
@@ -19,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: user.getName(),
           email: user.getEmail(),
           password: user.getPassword(),
         }),
