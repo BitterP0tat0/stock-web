@@ -1,8 +1,7 @@
-const modeToggle = document.getElementById("mode-toggle");
-const contentDiv = document.querySelector(".content");
-const btnAssets = document.getElementById("btn-assets");
-const btnTransactions = document.getElementById("btn-transactions");
-
+let modeToggle = null;
+let contentDiv = null;
+let btnAssets = null;
+let btnTransactions = null;
 let assetDoughnutChartInstance = null;
 let incomeLineChartInstance = null;
 
@@ -82,14 +81,35 @@ function toggleTheme() {
   }
 }
 
-if (modeToggle) {
-  const currentMode = document.body.classList.contains("dark-mode") ? "dark" : "light";
-  modeToggle.textContent = currentMode === "dark" ? "Light Mode" : "Dark Mode";
-}
+// 等待DOM加载完成后再初始化
+document.addEventListener('DOMContentLoaded', () => {
+  // 设置按钮文字
+  if (modeToggle) {
+    const currentMode = document.body.classList.contains("dark-mode") ? "dark" : "light";
+    modeToggle.textContent = currentMode === "dark" ? "Light Mode" : "Dark Mode";
+  }
+  
+  // 获取DOM元素
+  modeToggle = document.getElementById("mode-toggle");
+  contentDiv = document.querySelector(".content");
+  btnAssets = document.getElementById("btn-assets");
+  btnTransactions = document.getElementById("btn-transactions");
 
-applyThemeColors();
-
-modeToggle.addEventListener("click", toggleTheme);
+  applyThemeColors();
+  
+  showAssets();
+  
+  // 添加事件监听器
+  if (modeToggle) {
+    modeToggle.addEventListener("click", toggleTheme);
+  }
+  if (btnAssets) {
+    btnAssets.addEventListener("click", showAssets);
+  }
+  if (btnTransactions) {
+    btnTransactions.addEventListener("click", () => showTransactions(1));
+  }
+});
 
 function clearActive() {
   document

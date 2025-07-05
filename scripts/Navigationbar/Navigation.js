@@ -12,33 +12,33 @@ function setMode(mode) {
   }
 }
 
-const savedMode = localStorage.getItem("mode") || "light";
-setMode(savedMode);
+document.addEventListener('DOMContentLoaded', () => {
+  const savedMode = localStorage.getItem("mode") || "light";
+  setMode(savedMode);
+  
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const currentMode = body.classList.contains("dark-mode") ? "dark" : "light";
+      const newMode = currentMode === "dark" ? "light" : "dark";
+      setMode(newMode);
+      localStorage.setItem("mode", newMode);
+      
+      const toggleSwitch = document.getElementById("mode-toggle-switch");
+      if (toggleSwitch) {
+        toggleSwitch.checked = newMode === "dark";
+      }
+    });
+  }
 
-if (toggleBtn) {
-  toggleBtn.addEventListener("click", () => {
-    const currentMode = body.classList.contains("dark-mode") ? "dark" : "light";
-    const newMode = currentMode === "dark" ? "light" : "dark";
-    setMode(newMode);
-    localStorage.setItem("mode", newMode);
-    
-    // 同步PersonalInfo页面的switch
-    const toggleSwitch = document.getElementById("mode-toggle-switch");
-    if (toggleSwitch) {
-      toggleSwitch.checked = newMode === "dark";
-    }
-  });
-}
-
-// 监听PersonalInfo页面的switch变化
-const toggleSwitch = document.getElementById("mode-toggle-switch");
-if (toggleSwitch) {
-  toggleSwitch.addEventListener("change", () => {
-    const newMode = toggleSwitch.checked ? "dark" : "light";
-    setMode(newMode);
-    localStorage.setItem("mode", newMode);
-  });
-}
+  const toggleSwitch = document.getElementById("mode-toggle-switch");
+  if (toggleSwitch) {
+    toggleSwitch.addEventListener("change", () => {
+      const newMode = toggleSwitch.checked ? "dark" : "light";
+      setMode(newMode);
+      localStorage.setItem("mode", newMode);
+    });
+  }
+});
 
 ////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////
