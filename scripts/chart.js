@@ -158,15 +158,12 @@ observer.observe(document.body, { attributes: true, attributeFilter: ['class'] }
 window.addEventListener("DOMContentLoaded", () => {
   console.log("DOM Content Loaded");
   
-  // 设置标题
   const h1 = document.querySelector("h1");
   if (h1) {
     h1.textContent = `Stock Chart for ${symbol.toUpperCase()}`;
   }
   
-  // 初始化canvas context
   const canvas = document.getElementById("closePriceChart");
-  console.log("Canvas element:", canvas);
   if (canvas) {
     ctx = canvas.getContext("2d");
     console.log("Canvas context:", ctx);
@@ -174,7 +171,6 @@ window.addEventListener("DOMContentLoaded", () => {
     console.error("Canvas element not found!");
   }
   
-  // 加载图表
   const type = new URLSearchParams(window.location.search).get("type") || "daily";
   console.log("Loading chart for type:", type);
   loadChart(type);
