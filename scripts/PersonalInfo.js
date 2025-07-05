@@ -2,13 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
   const toggle = document.getElementById("mode-toggle-switch");
 
-  toggle?.addEventListener("change", () => {
-    body.classList.toggle("dark-mode");
-  });
+  // 初始化switch状态
+  const savedMode = localStorage.getItem("mode") || "light";
+  if (toggle) {
+    toggle.checked = savedMode === "dark";
+  }
 
-  document.getElementById("mode-toggle")?.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");
-    toggle.checked = body.classList.contains("dark-mode");
+  // 监听switch变化
+  toggle?.addEventListener("change", () => {
+    const newMode = toggle.checked ? "dark" : "light";
+    body.classList.remove("light-mode", "dark-mode");
+    body.classList.add(`${newMode}-mode`);
+    localStorage.setItem("mode", newMode);
   });
 
   

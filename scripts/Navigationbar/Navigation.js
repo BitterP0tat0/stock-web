@@ -21,6 +21,22 @@ if (toggleBtn) {
     const newMode = currentMode === "dark" ? "light" : "dark";
     setMode(newMode);
     localStorage.setItem("mode", newMode);
+    
+    // 同步PersonalInfo页面的switch
+    const toggleSwitch = document.getElementById("mode-toggle-switch");
+    if (toggleSwitch) {
+      toggleSwitch.checked = newMode === "dark";
+    }
+  });
+}
+
+// 监听PersonalInfo页面的switch变化
+const toggleSwitch = document.getElementById("mode-toggle-switch");
+if (toggleSwitch) {
+  toggleSwitch.addEventListener("change", () => {
+    const newMode = toggleSwitch.checked ? "dark" : "light";
+    setMode(newMode);
+    localStorage.setItem("mode", newMode);
   });
 }
 
