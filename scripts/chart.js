@@ -1,17 +1,10 @@
 // APJKM04Q8Q5VU2W7 another API key for Alpha Vantage
 // 7iuvkjj3japk0g2g is the API key used in this
 const apiKey = "APJKM04Q8Q5VU2W7";
-const h1 = document.querySelector("h1");
-const symbol =
-  new URLSearchParams(window.location.search).get("symbol") || "MSFT";
-const ctx = document.getElementById("closePriceChart").getContext("2d");
-const toggleBtn = document.getElementById("mode-toggle");
-const body = document.body;
+const symbol = new URLSearchParams(window.location.search).get("symbol") || "MSFT";
 let chartInstance = null;
 let cachedData = { labels: [], closePrices: [], openPrices: [] };
-
-h1.textContent = `Stock Chart for ${symbol.toUpperCase()}`;
-const email = new URLSearchParams(window.location.search).get("email")
+let ctx = null;
 
 function formatDate(dateStr, type) {
   const [year, month, day] = dateStr.split("-");
@@ -29,6 +22,16 @@ function getChartColors() {
 }
 
 function renderChart() {
+  const canvas = document.getElementById("closePriceChart");
+  if (!canvas) {
+    console.error("Canvas element not found");
+    return;
+  }
+  
+  if (!ctx) {
+    ctx = canvas.getContext("2d");
+  }
+  
   const { textColor, bgColor } = getChartColors();
   if (chartInstance) chartInstance.destroy();
 
@@ -138,17 +141,41 @@ function loadChart(type) {
     });
 }
 
-toggleBtn.addEventListener("click", () => {
-  body.classList.toggle("dark-mode");
-  toggleBtn.textContent = body.classList.contains("dark-mode")
-    ? "Light Mode"
-    : "Dark Mode";
-
+function handleModeChange() {
   renderChart();
+}
+
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+      handleModeChange();
+    }
+  });
 });
 
+observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
 window.addEventListener("DOMContentLoaded", () => {
-  const type =
-    new URLSearchParams(window.location.search).get("type") || "daily";
+  console.log("DOM Content Loaded");
+  
+  // 设置标题
+  const h1 = document.querySelector("h1");
+  if (h1) {
+    h1.textContent = `Stock Chart for ${symbol.toUpperCase()}`;
+  }
+  
+  // 初始化canvas context
+  const canvas = document.getElementById("closePriceChart");
+  console.log("Canvas element:", canvas);
+  if (canvas) {
+    ctx = canvas.getContext("2d");
+    console.log("Canvas context:", ctx);
+  } else {
+    console.error("Canvas element not found!");
+  }
+  
+  // 加载图表
+  const type = new URLSearchParams(window.location.search).get("type") || "daily";
+  console.log("Loading chart for type:", type);
   loadChart(type);
 });
