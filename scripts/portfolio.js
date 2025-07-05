@@ -81,25 +81,21 @@ function toggleTheme() {
   }
 }
 
-// 等待DOM加载完成后再初始化
 document.addEventListener('DOMContentLoaded', () => {
-  // 设置按钮文字
-  if (modeToggle) {
-    const currentMode = document.body.classList.contains("dark-mode") ? "dark" : "light";
-    modeToggle.textContent = currentMode === "dark" ? "Light Mode" : "Dark Mode";
-  }
-  
-  // 获取DOM元素
   modeToggle = document.getElementById("mode-toggle");
   contentDiv = document.querySelector(".content");
   btnAssets = document.getElementById("btn-assets");
   btnTransactions = document.getElementById("btn-transactions");
+  
+  if (modeToggle) {
+    const currentMode = document.body.classList.contains("dark-mode") ? "dark" : "light";
+    modeToggle.textContent = currentMode === "dark" ? "Light Mode" : "Dark Mode";
+  }
 
   applyThemeColors();
   
   showAssets();
   
-  // 添加事件监听器
   if (modeToggle) {
     modeToggle.addEventListener("click", toggleTheme);
   }

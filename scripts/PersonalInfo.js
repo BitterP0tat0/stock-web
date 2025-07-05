@@ -2,13 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
   const toggle = document.getElementById("mode-toggle-switch");
 
-  // 初始化switch状态
   const savedMode = localStorage.getItem("mode") || "light";
   if (toggle) {
     toggle.checked = savedMode === "dark";
   }
 
-  // 监听switch变化
   toggle?.addEventListener("change", () => {
     const newMode = toggle.checked ? "dark" : "light";
     body.classList.remove("light-mode", "dark-mode");
