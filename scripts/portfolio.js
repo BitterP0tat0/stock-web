@@ -9,6 +9,7 @@ let incomeLineChartInstance = null;
 function getThemeColors() {
   const style = getComputedStyle(document.body);
   const isDark = document.body.classList.contains("dark-mode");
+  const isLight = document.body.classList.contains("light-mode");
   return {
     textColor: style.getPropertyValue("--text-color").trim() || "#212529",
     bgColor: style.getPropertyValue("--bg-color").trim() || "#fff",
@@ -81,11 +82,12 @@ function toggleTheme() {
   }
 }
 
-// 设置按钮文字
 if (modeToggle) {
   const currentMode = document.body.classList.contains("dark-mode") ? "dark" : "light";
   modeToggle.textContent = currentMode === "dark" ? "Light Mode" : "Dark Mode";
 }
+
+applyThemeColors();
 
 modeToggle.addEventListener("click", toggleTheme);
 
