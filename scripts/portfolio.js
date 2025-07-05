@@ -81,14 +81,10 @@ function toggleTheme() {
   }
 }
 
-// 初始化模式
-const savedMode = localStorage.getItem("mode") || "light";
-document.body.classList.remove("light-mode", "dark-mode");
-document.body.classList.add(`${savedMode}-mode`);
-
 // 设置按钮文字
 if (modeToggle) {
-  modeToggle.textContent = savedMode === "dark" ? "Light Mode" : "Dark Mode";
+  const currentMode = document.body.classList.contains("dark-mode") ? "dark" : "light";
+  modeToggle.textContent = currentMode === "dark" ? "Light Mode" : "Dark Mode";
 }
 
 modeToggle.addEventListener("click", toggleTheme);
