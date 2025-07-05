@@ -65,20 +65,30 @@ function applyThemeColors() {
 }
 
 function toggleTheme() {
-  document.body.classList.toggle("dark-mode");
-  if (document.body.classList.contains("dark-mode")) {
-    modeToggle.textContent = "Light Mode";
-    localStorage.setItem("theme", "dark");
-  } else {
-    modeToggle.textContent = "Dark Mode";
-    localStorage.setItem("theme", "light");
-  }
+  const currentMode = document.body.classList.contains("dark-mode") ? "dark" : "light";
+  const newMode = currentMode === "dark" ? "light" : "dark";
+  
+  document.body.classList.remove("light-mode", "dark-mode");
+  document.body.classList.add(`${newMode}-mode`);
+  
+  localStorage.setItem("mode", newMode);
+  
   applyThemeColors();
   if (btnAssets.classList.contains("active")) {
     showAssets();
   } else if (btnTransactions.classList.contains("active")) {
     showTransactions(currentPage);
   }
+}
+
+// 初始化模式
+const savedMode = localStorage.getItem("mode") || "light";
+document.body.classList.remove("light-mode", "dark-mode");
+document.body.classList.add(`${savedMode}-mode`);
+
+// 设置按钮文字
+if (modeToggle) {
+  modeToggle.textContent = savedMode === "dark" ? "Light Mode" : "Dark Mode";
 }
 
 modeToggle.addEventListener("click", toggleTheme);
