@@ -164,6 +164,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   
   const canvas = document.getElementById("closePriceChart");
+  console.log("Canvas element:", canvas);
   if (canvas) {
     ctx = canvas.getContext("2d");
     console.log("Canvas context:", ctx);
