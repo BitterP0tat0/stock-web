@@ -38,6 +38,7 @@ body.light-mode {
   --footer-text-color: #6c757d;
   --footer-border-color: #dee2e6;
   --menu-background-color: #6c757d;
+  --menu-toggler-color: #6c757d;
 }
 
 body.dark-mode {
@@ -59,6 +60,7 @@ body.dark-mode {
   --footer-text-color: #999999;
   --footer-border-color: #333333;
   --menu-background-color: #999999;
+  --menu-toggler-color: #e1e1e1;
 }
 body {
   background-color: var(--bg-color);
@@ -78,7 +80,7 @@ nav.navbar {
 }
 
 .navbar-toggler {
-  background-color: var(--menu-background-color);
+  background-color: var(--menu-toggler-color);
   border-color: var(--menu-background-color) !important;
   color: var(--nav-text-color) !important;
 }
