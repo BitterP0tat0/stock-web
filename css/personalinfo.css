@@ -16,7 +16,7 @@
   --footer-bg-color: #f8f9fa;
   --footer-text-color: #6c757d;
   --footer-border-color: #dee2e6;
-  --menu-background-color: #6c757d;
+  --menu-background-color: #f8f9fa;
 }
 
 body.light-mode {
@@ -61,7 +61,7 @@ body.dark-mode {
   --menu-background-color: #999999;
 }
 body {
-  background-color: var(--bg-color);
+  background-color: var(--menu-background-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -137,7 +137,8 @@ main.container {
   border-radius: 10px;
   padding: 10px 15px;
   background-color: var(--card-bg-color);
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 /* Language dropdown fix */
@@ -188,7 +189,6 @@ main.container {
 .btn-dark {
   width: 48%;
 }
-
 
 .modal-content {
   color: var(--nav-text-color);

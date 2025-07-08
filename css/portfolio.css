@@ -100,7 +100,7 @@ nav.navbar {
 }
 
 .navbar-toggler {
-  background-color: var(--bg-color);
+  background-color: var(--menu-background-color);
   color: var(--nav-text-color);
   border-color: var(--nav-text-color);
 }
