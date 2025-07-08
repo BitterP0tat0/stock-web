@@ -100,7 +100,7 @@ nav.navbar {
 }
 
 .navbar-toggler {
-  background-color: var(--menu-background-color);
+  background-color: var(--bg-color);
   color: var(--nav-text-color);
   border-color: var(--nav-text-color);
 }
@@ -265,7 +265,8 @@ table tbody tr:nth-child(odd) {
   background-color: var(--bg-color);
 }
 
-table tbody tr, table tbody td {
+table tbody tr,
+table tbody td {
   color: var(--text-color);
 }
 
@@ -274,7 +275,7 @@ table tbody tr, table tbody td {
   body {
     padding-left: 0;
   }
-  
+
   .nav-sidebar {
     width: 100%;
     height: auto;
@@ -282,7 +283,7 @@ table tbody tr, table tbody td {
     border-radius: 0;
     margin-bottom: 20px;
   }
-  
+
   .nav-sidebar .user-info {
     position: relative;
     width: 100%;
@@ -290,7 +291,7 @@ table tbody tr, table tbody td {
     border-radius: 0;
     padding: 15px;
   }
-  
+
   .content {
     margin: 10px;
     width: calc(100% - 20px);

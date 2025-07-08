@@ -88,7 +88,7 @@ nav.navbar {
 }
 
 .navbar-toggler {
-  background-color: var(--menu-background-color);
+  background-color: var(--bg-color);
   color: var(--nav-text-color);
   border-color: var(--nav-text-color);
 }
