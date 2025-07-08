@@ -16,7 +16,7 @@
   --footer-bg-color: #f8f9fa;
   --footer-text-color: #6c757d;
   --footer-border-color: #dee2e6;
-  --menu-background-color: #f8f9fa;
+  --menu-background-color: #6c757d;
 }
 
 body.light-mode {
@@ -61,7 +61,7 @@ body.dark-mode {
   --menu-background-color: #999999;
 }
 body {
-  background-color: var(--menu-background-color);
+  background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
