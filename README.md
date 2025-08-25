@@ -15,12 +15,12 @@ A responsive web and mobile application to manage and analyze stock portfolios. 
 
 --------------------
 ### 🏗️ Tech Stack
--Frontend: React (Web), React Native (Mobile)
--Backend: Node.js, Express.js
--Database: MongoDB
--Authentication: JWT
--APIs: Alpha Vantage / Yahoo Finance
--UI: Material UI, Tailwind CSS
+- Frontend: React (Web), React Native (Mobile)
+- Backend: Node.js, Express.js
+- Database: MongoDB
+- Authentication: JWT
+- APIs: Alpha Vantage / Yahoo Finance
+- UI: Material UI, Tailwind CSS
 
 --------------
 ### 🧪 How to Test
