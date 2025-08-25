@@ -24,6 +24,6 @@ A responsive web and mobile application to manage and analyze stock portfolios. 
 
 --------------
 ### 🧪 How to Test
--✅ Requirements:
--Node.js & npm
--MongoDB (local or cloud instance)
+- ✅ Requirements:
+- Node.js & npm
+- MongoDB (local or cloud instance)
